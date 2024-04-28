@@ -98,6 +98,129 @@
   box-sizing: border-box;
 }
 
+/*/////////////////////////////////////////////*/
+
+html, body {
+  min-height: 100%;
+}
+body, div, form, input, select, p {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 14px;
+  color: #666;
+  line-height: 22px;
+}
+h1 {
+  position: absolute;
+  margin: 0;
+  font-size: 36px;
+  color: #fff;
+  z-index: 2;
+}
+
+.testbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+  padding: 20px;
+}
+form {
+  width: 100%;
+  padding: 20px;
+  border-radius: 6px;
+  background: #fff;
+  box-shadow: 0 0 30px 0 #095484;
+}
+
+.banner {
+  position: relative;
+  height: 90px;
+  background-image: url("assets/image/photo-1497294815431-9365093b7331.jpeg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+p.top-info {
+  margin: 10px 0;
+}
+input, select {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+input {
+  width: calc(100% - 10px);
+  padding: 5px;
+}
+select {
+  width: 100%;
+  padding: 7px 0;
+  background: transparent;
+}
+.item:hover p, .question:hover p, .question label:hover, input:hover::placeholder {
+  color: #095484;
+}
+.item input:hover, .item select:hover {
+  border: 1px solid transparent;
+  box-shadow: 0 0 5px 0 #095484;
+  color: #095484;
+}
+.item {
+  position: relative;
+  margin: 10px 0;
+}
+.question input {
+  width: auto;
+  margin: 0;
+  border-radius: 50%;
+}
+.question input, .question span {
+  vertical-align: middle;
+}
+.question label {
+  display: inline-block;
+  margin: 5px 20px 15px 0;
+}
+.btn-block {
+  margin-top: 10px;
+  text-align: center;
+}
+button {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  background-radius: 50%;
+  background: #e12463;
+  font-size: 16px;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover {
+  background: #e91e63;
+}
+@media (min-width: 568px) {
+  .name-item, .city-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .name-item input, .city-item input {
+    width: calc(50% - 20px);
+  }
+  .city-item select {
+    width: calc(50% - 8px);
+  }
+}
+
+/*/////////////////////////////////////////////*/
+
 #dashboardnotificationIcon{
   font-size: 20px;
   padding: 0 17px 0 0;
@@ -158,7 +281,7 @@ h6,
   margin-bottom: 0.5rem;
   font-weight: 400;
   line-height: 1.2;
-  color: #344767;
+  color: #e12463;
 }
 
 h1,
@@ -170,7 +293,7 @@ h1,
 
   h1,
   .h1 {
-    font-size: 3rem;
+    font-size: 40px;
   }
 }
 
@@ -408,7 +531,7 @@ label {
 }
 
 button {
-  border-radius: 0;
+  border-radius: 20px;
 }
 
 button:focus:not(:focus-visible) {
@@ -26002,7 +26125,7 @@ body {
 h1,
 .h1,
 .h1 {
-  font-size: 3rem;
+  font-size: 40px;
   line-height: 1.25;
   letter-spacing: 0;
 }
