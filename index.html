@@ -217,9 +217,9 @@
                 <li class="nav-item">
                     <a id="btnTable1" class="nav-link text-white ">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
+                            <i class="fa-solid fa-users" style="color: #ffffff;"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Tables</span>
+                        <span class="nav-link-text ms-1">Employee</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -803,8 +803,8 @@
     </div>
 </div  >
 
-<!--table-->
-<div id="tableForm">
+<!--Employee-->
+<div id="employeeForm">
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main2">
         <div class="sidenav-header">
             <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav2"></i>
@@ -826,9 +826,9 @@
                 <li class="nav-item">
                     <a id="btnTable2" class="nav-link text-white active bg-gradient-primary" href="../pages/tables.html">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">table_view</i>
+                            <i class="fa-solid fa-users" style="color: #ffffff;"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Tables</span>
+                        <span class="nav-link-text ms-1">Employee</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -852,10 +852,10 @@
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
                             <label class="form-label">Name</label>
-                            <input type="text" class="form-control">
+                            <input id="name" name="name" type="text" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <input type="file" class="form-control">
+                            <input id="pic" type="file" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -863,8 +863,8 @@
                     <div class="d-flex align-items-center me-md-5">
                         <p class="me-3 mb-0 font-weight-bold">Gender</p>
                         <div class="question-answer d-flex">
-                            <label class="me-3 mb-1"><input type="radio" value="male" name="gender" required> <span>Male</span></label>
-                            <label class="mb-0"><input type="radio" value="female" name="gender" required> <span>Female</span></label>
+                            <label class="me-3 mb-1"><input type="radio" value="MALE" name="gender" required> <span>Male</span></label>
+                            <label class="mb-0"><input type="radio" value="FEMALE" name="gender" required> <span>Female</span></label>
                         </div>
                     </div>
 
@@ -880,14 +880,14 @@
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
                             <label class="form-label">Designation</label>
-                            <input type="text" class="form-control">
+                            <input name="designation" type="text" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label"></label>
-                            <select class="form-select" aria-label="Default select example">
+                            <select name="role" class="form-select" aria-label="Default select example">
                                 <option selected>Select Role</option>
-                                <option value="1">ADMIN</option>
-                                <option value="2">USER</option>
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="USER">USER</option>
                             </select>
                         </div>
                     </div>
@@ -897,7 +897,7 @@
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
                             <p class="font-weight-bold">Date Of Birthday</p>
-                            <input type="date" class="form-control ms-3" id="dob">
+                            <input name="dob" type="date" class="form-control ms-3" id="dob">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <p class="font-weight-bold me-3">Join Date</p>
@@ -909,11 +909,11 @@
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
                             <label class="form-label">Attached Branch</label>
-                            <input type="text" class="form-control">
+                            <input name="attachedBranch" type="text" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Address 1</label>
-                            <input type="text" class="form-control">
+                            <input name="address1" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -921,11 +921,11 @@
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
                             <label class="form-label">Address 2</label>
-                            <input type="text" class="form-control">
+                            <input name="address2" type="text" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Address 3</label>
-                            <input type="text" class="form-control">
+                            <input name="address3" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -933,11 +933,11 @@
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
                             <label class="form-label">Address 4</label>
-                            <input type="text" class="form-control">
+                            <input name="address4" type="text" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Address 5</label>
-                            <input type="text" class="form-control">
+                            <input name="address5" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -946,11 +946,11 @@
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
                             <label class="form-label">Contact No</label>
-                            <input type="tel" class="form-control">
+                            <input name="contactNo" type="tel" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Email</label>
-                            <input type="text" class="form-control">
+                            <input name="email" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -959,11 +959,11 @@
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
                             <label class="form-label">Inform In Case Of Emergency</label>
-                            <input type="tel" class="form-control">
+                            <input id="informInCaseOfEmergency" type="tel" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Emergency Contact No</label>
-                            <input type="text" class="form-control">
+                            <input name="emergencyContact" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -972,20 +972,308 @@
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control">
+                            <input name="password" type="password" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Re-Password</label>
-                            <input type="password" class="form-control">
+                            <input id="rePassword" type="password" class="form-control">
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-block mt-6">
-                    <button type="button">Save</button>
+                    <button id="btnSave" type="button">Save</button>
+                    <button id="btnLoad" type="button">Load</button>
                 </div>
             </form>
         </div>
+        <!--////////////////////////////Table Start///////////////////////////////////-->
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card my-4">
+                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                    <h6 class="text-white text-capitalize ps-3">Employee table</h6>
+                                </div>
+                            </div>
+                            <div class="card-body px-0 pb-2">
+                                <div class="table-responsive p-0">
+                                    <table class="table align-items-center mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Picture &nbsp; &nbsp; Name/Email</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gender</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Designation</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Of Birthday</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Join Date</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Attached Branch</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Contact No</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Inform In Case Of Emergency</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Emergency Contact No</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div>
+                                                            <img src="assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                        </div>
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">John Michael</h6>
+                                                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs text-secondary mb-0">Grace</p>
+                                                    <p class="text-xs text-secondary mb-0">Perice</p>
+                                                    <p class="text-xs text-secondary mb-0">Road</p>
+                                                    <p class="text-xs text-secondary mb-0">Panadura</p>
+                                                    <p class="text-xs text-secondary mb-0">IJSE</p>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">MALE</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">ADMIN</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Manager</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Panadura</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">0771428333</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Amil</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">0771428333</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa-solid fa-trash fa-xl" style="color: #ff2600;"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div>
+                                                            <img src="assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                        </div>
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">John Michael</h6>
+                                                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs text-secondary mb-0">Grace</p>
+                                                    <p class="text-xs text-secondary mb-0">Perice</p>
+                                                    <p class="text-xs text-secondary mb-0">Road</p>
+                                                    <p class="text-xs text-secondary mb-0">Panadura</p>
+                                                    <p class="text-xs text-secondary mb-0">IJSE</p>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">MALE</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">ADMIN</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Manager</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Panadura</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">0771428333</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Amil</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">0771428333</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa-solid fa-trash fa-xl" style="color: #ff2600;"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div>
+                                                            <img src="assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                        </div>
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">John Michael</h6>
+                                                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs text-secondary mb-0">Grace</p>
+                                                    <p class="text-xs text-secondary mb-0">Perice</p>
+                                                    <p class="text-xs text-secondary mb-0">Road</p>
+                                                    <p class="text-xs text-secondary mb-0">Panadura</p>
+                                                    <p class="text-xs text-secondary mb-0">IJSE</p>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">MALE</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">ADMIN</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Manager</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Panadura</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">0771428333</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Amil</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">0771428333</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa-solid fa-trash fa-xl" style="color: #ff2600;"></i>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div>
+                                                            <img src="assets/img/team-2.jpg" class="avatar avatar-sm me-3 border-radius-lg" alt="user1">
+                                                        </div>
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-sm">John Michael</h6>
+                                                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <p class="text-xs text-secondary mb-0">Grace</p>
+                                                    <p class="text-xs text-secondary mb-0">Perice</p>
+                                                    <p class="text-xs text-secondary mb-0">Road</p>
+                                                    <p class="text-xs text-secondary mb-0">Panadura</p>
+                                                    <p class="text-xs text-secondary mb-0">IJSE</p>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">MALE</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">ADMIN</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Manager</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Panadura</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">0771428333</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">Amil</span>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <span class="text-secondary text-xs font-weight-bold">0771428333</span>
+                                                </td>
+                                                <td>
+                                                    <i class="fa-solid fa-trash fa-xl" style="color: #ff2600;"></i>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer py-4  ">
+                    <div class="container-fluid">
+                        <div class="row align-items-center justify-content-lg-between">
+                            <div class="col-lg-6 mb-lg-0 mb-4">
+                                <div class="copyright text-center text-sm text-muted text-lg-start">
+                                    © <script>
+                                    document.write(new Date().getFullYear())
+                                </script>,
+                                    made with <i class="fa fa-heart"></i> by
+                                    <a class="font-weight-bold" target="_blank">Amil Srinath</a>
+                                    for a better web.
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">Amil Srinath</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">About Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">Blog</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link pe-0 text-muted" target="_blank">License</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </main>
+        <!--////////////////////////////Table End///////////////////////////////////-->
     </main>
     <div class="fixed-plugin">
         <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
@@ -1316,11 +1604,65 @@
 <script src="assets/lib/jquery.min.js"></script>
 
 <script>
-    $("#navBarFrom").css('display','none');
-    $("#signInForm").css('display','block');
-    $("#dashboardForm").css('display','none');
-    $("#tableForm").css('display','none');
+    // $("#navBarFrom").css('display','none');
+    // $("#signInForm").css('display','block');
+    // $("#dashboardForm").css('display','none');
+    // $("#employeeForm").css('display','none');
 
+    $("#navBarFrom").css('display','block');
+    $("#signInForm").css('display','none');
+    $("#dashboardForm").css('display','none');
+    $("#employeeForm").css('display','block');
+
+    //Employee Save
+    $("#btnSave").on('click', () => {
+        if ($("input[name='password']").val() === $("#rePassword").val()) {
+            var formData = new FormData();
+
+            formData.append('employeeName', $("#name").val());
+            formData.append('employeeProfilePic', $("#pic").val());
+            formData.append('gender', $("input[name='gender']:checked").val());
+            formData.append('status', $("input[name='status']:checked").val());
+            formData.append('designation', $("input[name='designation']").val());
+            formData.append('role', $("select[name='role']").val());
+            formData.append('dob', $("#dob").val());
+            formData.append('joinDate', $("#joinDate").val());
+            formData.append('attachedBranch', $("input[name='attachedBranch']").val());
+            formData.append('employeeAddress1', $("input[name='address1']").val());
+            formData.append('employeeAddress2', $("input[name='address2']").val());
+            formData.append('employeeAddress3', $("input[name='address3']").val());
+            formData.append('employeeAddress4', $("input[name='address4']").val());
+            formData.append('employeeAddress5', $("input[name='address5']").val());
+            formData.append('contactNo', $("input[name='contactNo']").val());
+            formData.append('email', $("input[name='email']").val());
+            formData.append('emergencyContactNo', $("input[name='emergencyContact']").val());
+            formData.append('informInCaseOfEmergency', $("#informInCaseOfEmergency").val());
+            formData.append('password', $("input[name='password']").val());
+
+            var token = localStorage.getItem("token");
+
+            $.ajax({
+                url: "http://localhost:8080/Scope/api/v1/employee/save",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: formData,
+                headers: {
+                    "Authorization": "Bearer " + token
+                },
+                success: function (response) {
+                    console.log("Success:", response);
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error:", xhr.responseText);
+                }
+            });
+        }else {
+            alert("Please Check Password (:")
+        }
+    });
+
+    //Login Action
     $("#btnLogin").on('click',()=>{
         console.log("fndjskanfsnafan")
         var email = $("#txtEmail").val();
@@ -1341,7 +1683,7 @@
                 localStorage.setItem("token",response.token);
                 $("#signInForm").css('display','none');
                 $("#dashboardForm").css('display','block');
-                $("#tableForm").css('display','none');
+                $("#employeeForm").css('display','none');
                 $("#navBarFrom").css('display','block');
 
                 $("#dashboardEmail").text(email);
@@ -1358,45 +1700,50 @@
         $("#txtPassword").val(null);
     })
 
+    //Load Data
+    $("#btnLoad").on('click',()=>{
+
+    });
+
     $("#btnDashboard1").on('click',()=>{
         $("#signInForm").css('display','none');
         $("#dashboardForm").css('display','block');
-        $("#tableForm").css('display','none');
+        $("#employeeForm").css('display','none');
         $("#navBarFrom").css('display','block');
     })
 
     $("#btnDashboard2").on('click',()=>{
         $("#signInForm").css('display','none');
         $("#dashboardForm").css('display','block');
-        $("#tableForm").css('display','none');
+        $("#employeeForm").css('display','none');
         $("#navBarFrom").css('display','block');
     })
 
     $("#btnTable1").on('click',()=>{
         $("#signInForm").css('display','none');
         $("#dashboardForm").css('display','none');
-        $("#tableForm").css('display','block');
+        $("#employeeForm").css('display','block');
         $("#navBarFrom").css('display','block');
     })
 
     $("#btnTable2").on('click',()=>{
         $("#signInForm").css('display','none');
         $("#dashboardForm").css('display','none');
-        $("#tableForm").css('display','block');
+        $("#employeeForm").css('display','block');
         $("#navBarFrom").css('display','block');
     })
 
     $("#btnSingOut1").on('click',()=>{
         $("#signInForm").css('display','block');
         $("#dashboardForm").css('display','none');
-        $("#tableForm").css('display','none');
+        $("#employeeForm").css('display','none');
         $("#navBarFrom").css('display','none');
     })
 
     $("#btnSingOut2").on('click',()=>{
         $("#signInForm").css('display','block');
         $("#dashboardForm").css('display','none');
-        $("#tableForm").css('display','none');
+        $("#employeeForm").css('display','none');
         $("#navBarFrom").css('display','none');
     })
 
