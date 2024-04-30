@@ -98,6 +98,15 @@
   box-sizing: border-box;
 }
 
+.hand-cursor{
+  cursor: pointer;
+  color: #ff2600
+}
+
+.hand-cursor:hover{
+  color: #af1c1c;
+}
+
 /*///////////////////////Table start///////////////////////*/
 
 /*///////////////////////Table end///////////////////////*/
