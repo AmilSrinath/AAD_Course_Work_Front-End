@@ -279,6 +279,10 @@ hr {
   opacity: 0.25;
 }
 
+.navBar-padding{
+  padding-left: 280px;
+}
+
 h1,
 .h1,
 h2,
