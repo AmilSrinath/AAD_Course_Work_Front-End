@@ -1,3 +1,151 @@
+//Image to base64
+let base64String = "";
+function imageUploaded() {
+    let file = document.querySelector('input[type=file]')['files'][0];
+    let reader = new FileReader();
+    reader.onload = function () {
+        base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
+    }
+    reader.readAsDataURL(file);
+}
+
+//Delete Employee
+function deleteEmployee(event) {
+    event.stopPropagation(); // Stop event propagation
+    let email = $(event.target).closest("tr").find("#email").text();
+    console.log(email);
+    console.log("Deleted");
+
+    var formData = new FormData();
+    formData.append('email', email); // Append email to FormData object
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You want delete row?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "http://localhost:8080/Scope/api/v1/employee/delete",
+                type: "DELETE",
+                processData: false,
+                contentType: false,
+                data: formData, // Pass formData instead of just email
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                success: function (response) {
+                    Swal.fire(
+                        'Deleted!',
+                        `${email} has been deleted.`,
+                        'success'
+                    )
+                    loadData();
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error:", xhr.status);
+                    if (xhr.status === 403) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Only an Admin has access to delete employees (:',
+                            text: 'Something went wrong!'
+                        })
+                    }
+                }
+            });
+        }
+    });
+    loadData();
+}
+
+//Load Data
+function loadData() {
+    $.ajax({
+        url: "http://localhost:8080/Scope/api/v1/employee",
+        type: "GET",
+        processData: false,
+        contentType: false,
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        },
+        success: function (response) {
+            setValue(response);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error:", xhr.responseText);
+        }
+    });
+}
+
+//set Data for table
+const setValue = (response) => {
+    $("#employee-tbl-body").empty();
+    response.map((response) => {
+
+        let imageSrc = `data:image/jpeg;base64,${response.employeeProfilePic}`;
+
+        let recode = `<tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div id="imageContainer">
+                                        <img src="${imageSrc}" class="avatar avatar-xl me-3 border-radius-lg" alt="user1">
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">${response.employeeName}</h6>
+                                        <p id="email" class="text-xs text-secondary mb-0">${response.email}</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <p class="text-xs text-secondary mb-0">${response.employeeAddress1}</p>
+                                <p class="text-xs text-secondary mb-0">${response.employeeAddress2}</p>
+                                <p class="text-xs text-secondary mb-0">${response.employeeAddress3}</p>
+                                <p class="text-xs text-secondary mb-0">${response.employeeAddress4}</p>
+                                <p class="text-xs text-secondary mb-0">${response.employeeAddress5}</p>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">${response.gender}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">${response.status}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">${response.role}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">${response.designation}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">${response.dob}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">${response.joinDate}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">${response.attachedBranch}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">${response.contactNo}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">${response.informInCaseOfEmergency}</span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <span class="text-secondary text-xs font-weight-bold">${response.emergencyContactNo}</span>
+                            </td>
+                            <td>
+                                <i id="delteIcon" class="fa-solid fa-trash fa-xl hand-cursor ms-2" onclick="deleteEmployee(event)"></i>
+                            </td>
+                        </tr>`
+
+        $("#employee-tbl-body").append(recode);
+    })
+}
+
 //Employee Save
 $("#btnSave").on('click', () => {
     if ($("input[name='password']").val() === $("#rePassword").val()) {
@@ -259,6 +407,7 @@ $("#employee-tbl-body").on("click","tr", function () {
     });
 });
 
+
 function setData(employee) {
     $("#name").focus();
     $("#name").val(employee.employeeName);
@@ -310,158 +459,7 @@ function setData(employee) {
     $("#rePassword").val(employee.password);
 }
 
-//Delete Employee
-function deleteEmployee(event) {
-    event.stopPropagation(); // Stop event propagation
-    let email = $(event.target).closest("tr").find("#email").text();
-    console.log(email);
-    console.log("Deleted");
-
-    var formData = new FormData();
-    formData.append('email', email); // Append email to FormData object
-
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You want delete row?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: "http://localhost:8080/Scope/api/v1/employee/delete",
-                type: "DELETE",
-                processData: false,
-                contentType: false,
-                data: formData, // Pass formData instead of just email
-                headers: {
-                    "Authorization": "Bearer " + localStorage.getItem("token")
-                },
-                success: function (response) {
-                    Swal.fire(
-                        'Deleted!',
-                        `${email} has been deleted.`,
-                        'success'
-                    )
-                    loadData();
-                },
-                error: function (xhr, status, error) {
-                    console.error("Error:", xhr.status);
-                    if (xhr.status === 403) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Only an Admin has access to delete employees (:',
-                            text: 'Something went wrong!'
-                        })
-                    }
-                }
-            });
-        }
-    });
-    loadData();
-}
-
-//Load Data
-function loadData() {
-    $.ajax({
-        url: "http://localhost:8080/Scope/api/v1/employee",
-        type: "GET",
-        processData: false,
-        contentType: false,
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("token")
-        },
-        success: function (response) {
-            setValue(response);
-        },
-        error: function (xhr, status, error) {
-            console.error("Error:", xhr.responseText);
-        }
-    });
-}
-
-const setValue = (response) => {
-    $("#employee-tbl-body").empty();
-    response.map((response) => {
-
-        let imageSrc = `data:image/jpeg;base64,${response.employeeProfilePic}`;
-
-        let recode = `<tr>
-                            <td>
-                                <div class="d-flex px-2 py-1">
-                                    <div id="imageContainer">
-                                        <img src="${imageSrc}" class="avatar avatar-lg me-3 border-radius-lg" alt="user1">
-                                    </div>
-                                    <div class="d-flex flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">${response.employeeName}</h6>
-                                        <p id="email" class="text-xs text-secondary mb-0">${response.email}</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="text-xs text-secondary mb-0">${response.employeeAddress1}</p>
-                                <p class="text-xs text-secondary mb-0">${response.employeeAddress2}</p>
-                                <p class="text-xs text-secondary mb-0">${response.employeeAddress3}</p>
-                                <p class="text-xs text-secondary mb-0">${response.employeeAddress4}</p>
-                                <p class="text-xs text-secondary mb-0">${response.employeeAddress5}</p>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">${response.gender}</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">${response.status}</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">${response.role}</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">${response.designation}</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">${response.dob}</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">${response.joinDate}</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">${response.attachedBranch}</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">${response.contactNo}</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">${response.informInCaseOfEmergency}</span>
-                            </td>
-                            <td class="align-middle text-center">
-                                <span class="text-secondary text-xs font-weight-bold">${response.emergencyContactNo}</span>
-                            </td>
-                            <td>
-                                <i id="delteIcon" class="fa-solid fa-trash fa-xl hand-cursor" onclick="deleteEmployee(event)"></i>
-                            </td>
-                        </tr>`
-
-        $("#employee-tbl-body").append(recode);
-    })
-}
-
-let base64String = "";
-
-function imageUploaded() {
-    let file = document.querySelector('input[type=file]')['files'][0];
-
-    let reader = new FileReader();
-    console.log("next");
-
-    reader.onload = function () {
-        base64String = reader.result.replace("data:", "")
-            .replace(/^.+,/, "");
-
-        imageBase64Stringsep = base64String;
-    }
-    reader.readAsDataURL(file);
-}
-
 window.loadData=loadData;
 window.deleteEmployee=deleteEmployee;
+window.reset=reset;
+window.imageUploaded=imageUploaded;

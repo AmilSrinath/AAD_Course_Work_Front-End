@@ -259,7 +259,7 @@ const setValue = (response) => {
                                     <span class="text-secondary text-xs font-weight-bold">${response.recent_purchase_date_and_time}</span>
                                 </td>
                                 <td>
-                                    <i id="delteCustomerIcon" class="fa-solid fa-trash fa-xl hand-cursor" onclick="deleteCustomer(event)"></i>
+                                    <i id="delteCustomerIcon" class="fa-solid fa-trash fa-xl hand-cursor ms-2" onclick="deleteCustomer(event)"></i>
                                 </td>
                             </tr>`
 

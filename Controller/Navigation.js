@@ -13,6 +13,7 @@ $("#btnDashboard").on('click',()=>{
     $("#topBar").css('display','block');
     $("#customerForm").css('display','none');
     $("#sidenav-main").css('display','block');
+    $("#inventoryForm").css('display','none');
 })
 
 $("#btnEmployee").on('click',()=>{
@@ -22,6 +23,7 @@ $("#btnEmployee").on('click',()=>{
     $("#topBar").css('display','block');
     $("#customerForm").css('display','none');
     $("#sidenav-main").css('display','block');
+    $("#inventoryForm").css('display','none');
 })
 
 $("#btnSingOut").on('click',()=>{
@@ -31,15 +33,17 @@ $("#btnSingOut").on('click',()=>{
     $("#topBar").css('display','none');
     $("#customerForm").css('display','none');
     $("#sidenav-main").css('display','none');
+    $("#inventoryForm").css('display','none');
 })
 
-$("#btnCustomer").on('click',()=>{
+$("#btnCustomer").on('click',()=> {
     $("#signInForm").css('display','none');
     $("#dashboardForm").css('display','none');
     $("#employeeForm").css('display','none');
     $("#topBar").css('display','block');
     $("#customerForm").css('display','block');
     $("#sidenav-main").css('display','block');
+    $("#inventoryForm").css('display','none');
 })
 
 $("#btnInventory").on('click',()=>{

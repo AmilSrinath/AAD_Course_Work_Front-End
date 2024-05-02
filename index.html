@@ -230,7 +230,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a id="btnInventory" class="nav-link text-white nav-link-color ">
+                <a id="btnInventory" class="nav-link text-white nav-link-color " onclick="loadItemData()">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-cart-flatbed" style="color: #ffffff;"></i>
                     </div>
@@ -983,7 +983,7 @@
                                     <table class="table align-items-center mb-0">
                                         <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Picture &nbsp; &nbsp; Name/Email</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-4">Picture &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Name/Email</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gender</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
@@ -1287,113 +1287,36 @@
             </div>
         </main>
     </main>
-    <div class="fixed-plugin">
-        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-            <i class="material-icons py-2">settings</i>
-        </a>
-        <div class="card shadow-lg">
-            <div class="card-header pb-0 pt-3">
-                <div class="float-start">
-                    <h5 class="mt-3 mb-0">Material UI Configurator</h5>
-                    <p>See our dashboard options.</p>
-                </div>
-                <div class="float-end mt-4">
-                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
-                        <i class="material-icons">clear</i>
-                    </button>
-                </div>
-            </div>
-            <hr class="horizontal dark my-1">
-            <div class="card-body pt-sm-3 pt-0">
-                <div>
-                    <h6 class="mb-0">Sidebar Colors</h6>
-                </div>
-                <a href="javascript:void(0)" class="switch-trigger background-color">
-                    <div class="badge-colors my-2 text-start">
-                        <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
-                    </div>
-                </a>
-                <div class="mt-3">
-                    <h6 class="mb-0">Sidenav Type</h6>
-                    <p class="text-sm">Choose between 2 different sidenav types.</p>
-                </div>
-                <div class="d-flex">
-                    <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
-                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
-                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
-                </div>
-                <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
-                <div class="mt-3 d-flex">
-                    <h6 class="mb-0">Navbar Fixed</h6>
-                    <div class="form-check form-switch ps-0 ms-auto my-auto">
-                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
-                    </div>
-                </div>
-                <hr class="horizontal dark my-3">
-                <div class="mt-2 d-flex">
-                    <h6 class="mb-0">Light / Dark</h6>
-                    <div class="form-check form-switch ps-0 ms-auto my-auto">
-                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version" onclick="darkMode(this)">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!--Inventory-->
 <div id="inventoryForm">
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg navBar-padding">
         <div class="testbox">
-            <form action="/">
+            <form>
                 <div class="banner">
                     <h1>Inventory Manage Form</h1>
                 </div>
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label for="name" class="form-label">Name</label>
-                            <input id="name" name="name" type="text" class="form-control">
+                            <label for="name" class="form-label">Item Name</label>
+                            <input name="itemName" type="text" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <input id="pic" type="file" class="form-control" onchange="imageUploaded()">
-                        </div>
-                    </div>
-                </div>
-                <div class="question ms-4 d-flex flex-column flex-md-row">
-                    <div class="d-flex align-items-center me-md-5">
-                        <p class="me-3 mb-0 font-weight-bold">Gender</p>
-                        <div class="question-answer d-flex">
-                            <label class="me-3 mb-1"><input type="radio" value="MALE" name="gender" required> <span>Male</span></label>
-                            <label class="mb-0"><input type="radio" value="FEMALE" name="gender" required> <span>Female</span></label>
-                        </div>
-                    </div>
-
-                    <div class="d-flex align-items-center ms-12">
-                        <p class="me-3 mb-0 font-weight-bold">Status</p>
-                        <div class="question-answer d-flex">
-                            <label class="me-3 mb-1"><input type="radio" value="single" name="status" required> <span>Single</span></label>
-                            <label class="mb-0"><input type="radio" value="married" name="status" required> <span>Married</span></label>
+                            <input name="itemPic" type="file" class="form-control" onchange="itemImageUploaded()">
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Designation</label>
-                            <input name="designation" type="text" class="form-control">
+                            <label class="form-label">Item Quantity</label>
+                            <input name="itemQuantity" type="number" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <select name="role" aria-label="Default select example">
-                                <option selected>Select Role</option>
-                                <option value="ADMIN">ADMIN</option>
-                                <option value="USER">USER</option>
-                            </select>
+                            <label class="form-label">Category</label>
+                            <input name="itemCategory" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -1401,95 +1324,44 @@
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <p class="font-weight-bold">Date Of Birthday</p>
-                            <input name="dob" type="date" class="form-control ms-3" id="dob">
+                            <label class="form-label">Size</label>
+                            <input name="itemSize" type="number" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <p class="font-weight-bold me-3">Join Date</p>
-                            <input type="date" class="form-control" id="joinDate">
+                            <label class="form-label">Unit Price-Sale</label>
+                            <input name="itemUnitPrice-Sale" type="number" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Attached Branch</label>
-                            <input name="attachedBranch" type="text" class="form-control">
+                            <label class="form-label">Unit Price-Buy</label>
+                            <input name="itemUnitPrice-Buy" type="number" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label for="address1" class="form-label">Address 1</label>
-                            <input id="address1" name="address1" type="text" class="form-control">
+                            <label class="form-label">Expected Profit</label>
+                            <input name="itemExpectedProfit" type="number" class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Address 2</label>
-                            <input name="address2" type="text" class="form-control">
+                            <label class="form-label">Profit Margin</label>
+                            <input name="itemProfitMargin" type="number" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Address 3</label>
-                            <input name="address3" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Address 4</label>
-                            <input name="address4" type="text" class="form-control">
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Address 5</label>
-                            <input name="address5" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Contact No</label>
-                            <input id="employeeContactNo" name="contactNo" type="tel" class="form-control">
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Email</label>
-                            <input id="employeeEmail" name="email" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label for="informInCaseOfEmergency" class="form-label">Inform In Case Of Emergency</label>
-                            <input id="informInCaseOfEmergency" type="tel" class="form-control">
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Emergency Contact No</label>
-                            <input name="emergencyContact" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Password</label>
-                            <input id="password" name="password" type="password" class="form-control">
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Re-Password</label>
-                            <input id="rePassword" type="password" class="form-control">
+                            <label class="form-label">Status</label>
+                            <input name="itemStatus" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
 
                 <div class="btn-block mt-6">
-                    <button id="btnSave" type="button">Save</button>
-                    <button id="btnUpdate" type="button">Update</button>
-                    <button id="reset" type="button">Reset</button>
+                    <button id="btnItemSave" type="button">Save</button>
+                    <button id="btnItemUpdate" type="button">Update</button>
+                    <button id="btnItemreset" type="reset">Reset</button>
                 </div>
             </form>
         </div>
@@ -1500,7 +1372,7 @@
                         <div class="card my-4">
                             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                                    <h6 class="text-white text-capitalize ps-3">Employee table</h6>
+                                    <h6 class="text-white text-capitalize ps-3">Inventory table</h6>
                                 </div>
                             </div>
                             <div class="card-body px-0 pb-2">
@@ -1508,25 +1380,21 @@
                                     <table class="table align-items-center mb-0">
                                         <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Picture &nbsp; &nbsp; Name/Email</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gender</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Picture</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Size</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Unite Price-Sale</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Unite Price-Buy</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expected Profit</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Profit Margin</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Role</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Designation</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date Of Birthday</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Join Date</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Attached Branch</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Contact No</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Inform In Case Of Emergency</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Emergency Contact No</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                                             <th class="text-secondary opacity-7"></th>
                                         </tr>
                                         </thead>
-                                        <tbody id="employee-tbl-body">
-
-                                        </tbody>
+                                        <tbody id="item-tbl-body"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -1568,63 +1436,6 @@
             </div>
         </main>
     </main>
-    <div class="fixed-plugin">
-        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-            <i class="material-icons py-2">settings</i>
-        </a>
-        <div class="card shadow-lg">
-            <div class="card-header pb-0 pt-3">
-                <div class="float-start">
-                    <h5 class="mt-3 mb-0">Material UI Configurator</h5>
-                    <p>See our dashboard options.</p>
-                </div>
-                <div class="float-end mt-4">
-                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
-                        <i class="material-icons">clear</i>
-                    </button>
-                </div>
-            </div>
-            <hr class="horizontal dark my-1">
-            <div class="card-body pt-sm-3 pt-0">
-                <div>
-                    <h6 class="mb-0">Sidebar Colors</h6>
-                </div>
-                <a href="javascript:void(0)" class="switch-trigger background-color">
-                    <div class="badge-colors my-2 text-start">
-                        <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
-                    </div>
-                </a>
-                <div class="mt-3">
-                    <h6 class="mb-0">Sidenav Type</h6>
-                    <p class="text-sm">Choose between 2 different sidenav types.</p>
-                </div>
-                <div class="d-flex">
-                    <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
-                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
-                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
-                </div>
-                <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
-                <div class="mt-3 d-flex">
-                    <h6 class="mb-0">Navbar Fixed</h6>
-                    <div class="form-check form-switch ps-0 ms-auto my-auto">
-                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed2" onclick="navbarFixed(this)">
-                    </div>
-                </div>
-                <hr class="horizontal dark my-3">
-                <div class="mt-2 d-flex">
-                    <h6 class="mb-0">Light / Dark</h6>
-                    <div class="form-check form-switch ps-0 ms-auto my-auto">
-                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version2" onclick="darkMode(this)">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 
@@ -1919,6 +1730,7 @@
     $("#sidenav-main").css('display','block');
     $("#customerForm").css('display','none');
     $("#inventoryForm").css('display','block');
+
 </script>
 </body>
 
