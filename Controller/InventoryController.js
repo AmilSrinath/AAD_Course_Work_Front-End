@@ -15,12 +15,13 @@ $("#btnItemSave").on('click', () => {
     let itemPic = $("input[name='itemPic']").val();
     let itemQuantity = $("input[name='itemQuantity']").val();
     let itemCategory = $("input[name='itemCategory']").val();
-    let itemSize = $("input[name='itemSize']").val();
     let itemUnitPriceSale = $("input[name='itemUnitPrice-Sale']").val();
     let itemUnitPriceBuy = $("input[name='itemUnitPrice-Buy']").val();
     let itemExpectedProfit = $("input[name='itemExpectedProfit']").val();
     let itemProfitMargin = $("input[name='itemProfitMargin']").val();
     let itemStatus = $("input[name='itemStatus']").val();
+    let supplierID = $("#supplierIDs").val();
+
 
     if (!itemName) {
         Swal.fire({
@@ -53,15 +54,6 @@ $("#btnItemSave").on('click', () => {
         Swal.fire({
             icon: 'error',
             title: 'Please Check Item Category Field',
-            text: 'Something went wrong!'
-        });
-        return;
-    }
-
-    if (!itemSize) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Please Check Item Size Field',
             text: 'Something went wrong!'
         });
         return;
@@ -112,18 +104,20 @@ $("#btnItemSave").on('click', () => {
         return;
     }
 
+
+
     var formData = new FormData();
 
     formData.append('item_desc', itemName);
     formData.append('item_pic', itemImageBase64);
     formData.append('item_qty', itemQuantity);
     formData.append('category', itemCategory);
-    formData.append('size', itemSize);
     formData.append('unit_price_sale', itemUnitPriceSale);
     formData.append('unit_price_buy', itemUnitPriceBuy);
     formData.append('expected_profit', itemExpectedProfit);
     formData.append('profit_margin', itemProfitMargin);
     formData.append('status', itemStatus);
+    formData.append('supplier_id', supplierID);
 
     $.ajax({
         url: "http://localhost:8080/Scope/api/v1/inventory/save",
@@ -140,7 +134,7 @@ $("#btnItemSave").on('click', () => {
                 'Item has been saved.',
                 'success'
             ).then(() => {
-                //window.location.reload();
+                loadItemData();
             });
         },
         error: function (xhr, status, error) {
@@ -166,11 +160,32 @@ function loadItemData() {
             console.error("Error:", xhr.responseText);
         }
     });
+
+    $.ajax({
+        url: "http://localhost:8080/Scope/api/v1/supplier/getSupplierIds",
+        type: "GET",
+        processData: false,
+        contentType: false,
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        },
+        success: function (response) {
+            console.log(response);
+            $("#supplierIDs").empty();
+            $("#supplierIDs").append(`<option>Select Supplier</option>`);
+            response.map((response) => {
+                $("#supplierIDs").append(`<option value="${response}">${response}</option>`);
+            });
+        },
+        error: function (xhr, status, error) {
+            console.error("Error:", xhr.responseText);
+        }
+    });
 }
 
 //set Data for table
 const setValue = (response) => {
-    $("#employee-tbl-body").empty();
+    $("#item-tbl-body").empty();
     response.map((response) => {
 
         let imageSrc = `data:image/jpeg;base64,${response.item_pic}`;
@@ -182,16 +197,16 @@ const setValue = (response) => {
                                     </div>
                                 </td>
                                 <td>
-                                    <span class="text-secondary text-xs font-weight-bold">${response.item_desc}</span>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 id="item-code" class="mb-0 text-sm">${response.item_code}</h6>
+                                        <p id="email" class="text-xs text-secondary mb-0 font-weight-bold">${response.item_desc}</p>
+                                    </div>
                                 </td>
                                 <td>
                                     <span class="text-secondary text-xs font-weight-bold">${response.item_qty}</span>
                                 </td>
                                 <td class="align-middle text-center">
                                     <span class="text-secondary text-xs font-weight-bold">${response.category}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.size}</span>
                                 </td>
                                 <td class="align-middle text-center">
                                     <span class="text-secondary text-xs font-weight-bold">${response.unit_price_sale}</span>
@@ -217,22 +232,114 @@ const setValue = (response) => {
     })
 }
 
+//Row Click
+let index;
+$("#item-tbl-body").on("click","tr", function () {
+    index = $(this).index();
+    let itemCode = $(this).find("#item-code").text();
+
+    $.ajax({
+        url: "http://localhost:8080/Scope/api/v1/inventory/selectInventory",
+        type: "GET",
+        data: { item_code: itemCode },
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+        },
+        success: function (response) {
+            setData(response);
+        },
+        error: function (xhr, status, error) {
+            console.error("Error:", xhr.responseText);
+        }
+    });
+});
+
+function setData(response) {
+    $("input[name='itemName']").focus();
+    $("input[name='itemName']").val(response.item_desc);
+
+    $("input[name='itemQuantity']").focus();
+    $("input[name='itemQuantity']").val(response.item_qty);
+
+    $("input[name='itemCategory']").focus();
+    $("input[name='itemCategory']").val(response.category);
+
+    $("input[name='itemSize']").focus();
+    $("input[name='itemSize']").val(response.size);
+
+    $("input[name='itemUnitPrice-Sale']").focus();
+    $("input[name='itemUnitPrice-Sale']").val(response.unit_price_sale);
+
+    $("input[name='itemUnitPrice-Buy']").focus();
+    $("input[name='itemUnitPrice-Buy']").val(response.unit_price_buy);
+
+    $("input[name='itemExpectedProfit']").focus();
+    $("input[name='itemExpectedProfit']").val(response.expected_profit);
+
+    $("input[name='itemProfitMargin']").focus();
+    $("input[name='itemProfitMargin']").val(response.profit_margin);
+
+    $("input[name='itemStatus']").focus();
+    $("input[name='itemStatus']").val(response.status);
+}
+
+$("#btnItemUpdate").on('click', () => {
+    document.getElementById("itemForm").reset();
+})
 
 
+//Delete Item
+function deleteItem(event) {
+    event.stopPropagation(); // Stop event propagation
+    let itemID = $(event.target).closest("tr").find("#item-code").text();
+    console.log(itemID);
 
+    var formData = new FormData();
+    formData.append('item_code', itemID);
 
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You want delete row?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "http://localhost:8080/Scope/api/v1/inventory/delete",
+                type: "DELETE",
+                processData: false,
+                contentType: false,
+                data: formData,
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                success: function (response) {
+                    Swal.fire(
+                        'Deleted!',
+                        `${itemID} has been deleted.`,
+                        'success'
+                    )
+                    loadItemData();
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error:", xhr.status);
+                    if (xhr.status === 403) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Only an Admin has access to delete inventory (:',
+                            text: 'Something went wrong!'
+                        })
+                    }
+                }
+            });
+        }
+    });
+    loadItemData();
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+window.deleteItem=deleteItem;
 window.loadItemData=loadItemData;
 window.itemImageUploaded=itemImageUploaded;

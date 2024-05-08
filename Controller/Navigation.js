@@ -14,6 +14,8 @@ $("#btnDashboard").on('click',()=>{
     $("#customerForm").css('display','none');
     $("#sidenav-main").css('display','block');
     $("#inventoryForm").css('display','none');
+    $("#suppierForm").css('display','none');
+    $("#saleForm").css('display','none');
 })
 
 $("#btnEmployee").on('click',()=>{
@@ -24,6 +26,8 @@ $("#btnEmployee").on('click',()=>{
     $("#customerForm").css('display','none');
     $("#sidenav-main").css('display','block');
     $("#inventoryForm").css('display','none');
+    $("#suppierForm").css('display','none');
+    $("#saleForm").css('display','none');
 })
 
 $("#btnSingOut").on('click',()=>{
@@ -34,6 +38,8 @@ $("#btnSingOut").on('click',()=>{
     $("#customerForm").css('display','none');
     $("#sidenav-main").css('display','none');
     $("#inventoryForm").css('display','none');
+    $("#suppierForm").css('display','none');
+    $("#saleForm").css('display','none');
 })
 
 $("#btnCustomer").on('click',()=> {
@@ -44,6 +50,8 @@ $("#btnCustomer").on('click',()=> {
     $("#customerForm").css('display','block');
     $("#sidenav-main").css('display','block');
     $("#inventoryForm").css('display','none');
+    $("#suppierForm").css('display','none');
+    $("#saleForm").css('display','none');
 })
 
 $("#btnInventory").on('click',()=>{
@@ -54,5 +62,31 @@ $("#btnInventory").on('click',()=>{
     $("#customerForm").css('display','none');
     $("#sidenav-main").css('display','block');
     $("#inventoryForm").css('display','block');
+    $("#suppierForm").css('display','none');
+    $("#saleForm").css('display','none');
+})
+
+$("#btnSupplier").on('click',()=>{
+    $("#signInForm").css('display','none');
+    $("#dashboardForm").css('display','none');
+    $("#employeeForm").css('display','none');
+    $("#topBar").css('display','block');
+    $("#customerForm").css('display','none');
+    $("#sidenav-main").css('display','block');
+    $("#inventoryForm").css('display','none');
+    $("#suppierForm").css('display','block');
+    $("#saleForm").css('display','none');
+})
+
+$("#btnSale").on('click',()=>{
+    $("#signInForm").css('display','none');
+    $("#dashboardForm").css('display','none');
+    $("#employeeForm").css('display','none');
+    $("#topBar").css('display','block');
+    $("#customerForm").css('display','none');
+    $("#sidenav-main").css('display','block');
+    $("#inventoryForm").css('display','none');
+    $("#suppierForm").css('display','none');
+    $("#saleForm").css('display','block');
 })
 

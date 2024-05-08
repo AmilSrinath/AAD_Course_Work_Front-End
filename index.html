@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>
-        Material Dashboard 2 by Amil Srinath
+        Dashboard by Amil Srinath
     </title>
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
     <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
@@ -38,11 +38,6 @@
                             <i id="sideBarIcon2" class="sidenav-toggler-line"></i>
                             <i id="sideBarIcon3" class="sidenav-toggler-line"></i>
                         </div>
-                    </a>
-                </li>
-                <li class="nav-item px-3 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body p-0">
-                        <i id="settingIcon" class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
                     </a>
                 </li>
                 <li class="nav-item dropdown pe-2 d-flex align-items-center">
@@ -222,6 +217,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a id="btnInventory" class="nav-link text-white nav-link-color " onclick="loadItemData()">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-cart-flatbed" style="color: #ffffff;"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Inventory</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a id="btnCustomer" class="nav-link text-white nav-link-color " onclick="loadCustomerData()">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-users" style="color: #ffffff;"></i>
@@ -230,11 +233,19 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a id="btnInventory" class="nav-link text-white nav-link-color " onclick="loadItemData()">
+                <a id="btnSupplier" class="nav-link text-white nav-link-color " onclick="loadSupplierData()">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa-solid fa-cart-flatbed" style="color: #ffffff;"></i>
+                        <i class="fa-solid fa-truck-field" style="color: #ffffff;"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Inventory</span>
+                    <span class="nav-link-text ms-1">Supplier</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a id="btnSale" class="nav-link text-white nav-link-color " onclick="loadSupplierData()">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa-solid fa-hand-holding-dollar" style="color: #ffffff;"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Sale</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -764,61 +775,6 @@
             </footer>
         </div>
     </main>
-    <div class="fixed-plugin">
-        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-            <i class="material-icons py-2">settings</i>
-        </a>
-        <div class="card shadow-lg">
-            <div class="card-header pb-0 pt-3">
-                <div class="float-start">
-                    <h5 class="mt-3 mb-0">Material UI Configurator</h5>
-                    <p>See our dashboard options.</p>
-                </div>
-                <div class="float-end mt-4">
-                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
-                        <i class="material-icons">clear</i>
-                    </button>
-                </div>
-                <!-- End Toggle Button -->
-            </div>
-            <hr class="horizontal dark my-1">
-            <div class="card-body pt-sm-3 pt-0">
-                <!-- Sidebar Backgrounds -->
-                <div>
-                    <h6 class="mb-0">Sidebar Colors</h6>
-                </div>
-                <a href="javascript:void(0)" class="switch-trigger background-color">
-                    <div class="badge-colors my-2 text-start">
-                        <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
-                    </div>
-                </a>
-                <!-- Sidenav Type -->
-                <div class="mt-3">
-                    <h6 class="mb-0">Sidenav Type</h6>
-                    <p class="text-sm">Choose between 2 different sidenav types.</p>
-                </div>
-                <div class="d-flex">
-                    <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
-                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
-                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
-                </div>
-                <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
-                <!-- Navbar Fixed -->
-                <hr class="horizontal dark my-3">
-                <div class="mt-2 d-flex">
-                    <h6 class="mb-0">Light / Dark</h6>
-                    <div class="form-check form-switch ps-0 ms-auto my-auto">
-                        <input class="form-check-input mt-1 ms-auto" type="checkbox" onclick="darkMode(this)">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div  >
 
 <!--Employee-->
@@ -1043,63 +999,6 @@
             </div>
         </main>
     </main>
-    <div class="fixed-plugin">
-        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-            <i class="material-icons py-2">settings</i>
-        </a>
-        <div class="card shadow-lg">
-            <div class="card-header pb-0 pt-3">
-                <div class="float-start">
-                    <h5 class="mt-3 mb-0">Material UI Configurator</h5>
-                    <p>See our dashboard options.</p>
-                </div>
-                <div class="float-end mt-4">
-                    <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
-                        <i class="material-icons">clear</i>
-                    </button>
-                </div>
-            </div>
-            <hr class="horizontal dark my-1">
-            <div class="card-body pt-sm-3 pt-0">
-                <div>
-                    <h6 class="mb-0">Sidebar Colors</h6>
-                </div>
-                <a href="javascript:void(0)" class="switch-trigger background-color">
-                    <div class="badge-colors my-2 text-start">
-                        <span class="badge filter bg-gradient-primary active" data-color="primary" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-dark" data-color="dark" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-info" data-color="info" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-success" data-color="success" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-warning" data-color="warning" onclick="sidebarColor(this)"></span>
-                        <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
-                    </div>
-                </a>
-                <div class="mt-3">
-                    <h6 class="mb-0">Sidenav Type</h6>
-                    <p class="text-sm">Choose between 2 different sidenav types.</p>
-                </div>
-                <div class="d-flex">
-                    <button class="btn bg-gradient-dark px-3 mb-2 active" data-class="bg-gradient-dark" onclick="sidebarType(this)">Dark</button>
-                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-transparent" onclick="sidebarType(this)">Transparent</button>
-                    <button class="btn bg-gradient-dark px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
-                </div>
-                <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
-                <div class="mt-3 d-flex">
-                    <h6 class="mb-0">Navbar Fixed</h6>
-                    <div class="form-check form-switch ps-0 ms-auto my-auto">
-                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed2" onclick="navbarFixed(this)">
-                    </div>
-                </div>
-                <hr class="horizontal dark my-3">
-                <div class="mt-2 d-flex">
-                    <h6 class="mb-0">Light / Dark</h6>
-                    <div class="form-check form-switch ps-0 ms-auto my-auto">
-                        <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version2" onclick="darkMode(this)">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!--Customer-->
@@ -1324,8 +1223,8 @@
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Size</label>
-                            <input name="itemSize" type="number" class="form-control">
+                            <label class="form-label">Profit Margin</label>
+                            <input name="itemProfitMargin" type="number" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Unit Price-Sale</label>
@@ -1348,12 +1247,13 @@
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Profit Margin</label>
-                            <input name="itemProfitMargin" type="number" class="form-control">
+                            <select id="supplierIDs" aria-label="Default select example">
+                                <option selected>Select Supplier</option>
+                            </select>
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Status</label>
-                            <input name="itemStatus" type="text" class="form-control">
+                            <input id="itemStatus" name="itemStatus" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -1362,6 +1262,39 @@
                     <button id="btnItemSave" type="button">Save</button>
                     <button id="btnItemUpdate" type="button">Update</button>
                     <button id="btnItemreset" type="reset">Reset</button>
+                    <!-- Button trigger modal -->
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Supplier Details</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Supplier_Inventory Details <Table></Table></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body ms-7">
+                                    <table>
+                                        <tr>
+                                            <th class="text-center text-uppercase text-secondary text-md-start font-weight-bolder opacity-7 ">Status</th>
+                                            <th class="text-center text-uppercase text-secondary text-md-center font-weight-bolder opacity-7 ps-5 pe-5">Role</th>
+                                            <th class="text-center text-uppercase text-secondary text-md-end font-weight-bolder opacity-7">Designation</th>
+                                        </tr>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">123</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">123</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">123</span>
+                                        </td>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </form>
         </div>
@@ -1381,10 +1314,9 @@
                                         <thead>
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Picture</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ID/Name</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Size</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Unite Price-Sale</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Unite Price-Buy</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expected Profit</th>
@@ -1401,6 +1333,306 @@
                         </div>
                     </div>
                 </div>
+                <footer class="footer py-4  ">
+                    <div class="container-fluid">
+                        <div class="row align-items-center justify-content-lg-between">
+                            <div class="col-lg-6 mb-lg-0 mb-4">
+                                <div class="copyright text-center text-sm text-muted text-lg-start">
+                                    © <script>
+                                    document.write(new Date().getFullYear())
+                                </script>,
+                                    made with <i class="fa fa-heart"></i> by
+                                    <a class="font-weight-bold" target="_blank">Amil Srinath</a>
+                                    for a better web.
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">Amil Srinath</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">About Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">Blog</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link pe-0 text-muted" target="_blank">License</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </main>
+</div>
+
+<!--Supplier-->
+<div id="suppierForm">
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg navBar-padding">
+        <div class="testbox">
+            <form>
+                <div class="banner">
+                    <h1>Supplier Manage Form</h1>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label for="name" class="form-label">Name</label>
+                            <input id="supplierName" name="name" type="text" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <select name="category" aria-label="Default select example">
+                                <option selected>Select Category</option>
+                                <option value="INTERNATIONAL">INTERNATIONAL</option>
+                                <option value="LOCAL">LOCAL</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Address 1</label>
+                            <input name="supplierAddress1" type="text" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Address 2</label>
+                            <input name="supplierAddress2" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Address 3</label>
+                            <input name="supplierAddress3" type="text" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Address 4</label>
+                            <input name="supplierAddress4" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Address 5</label>
+                            <input name="supplierAddress5" type="text" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Address 6</label>
+                            <input name="supplierAddress6" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Contact 1</label>
+                            <input name="supplierContact1" type="text" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Contact 2</label>
+                            <input name="supplierContact2" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Email</label>
+                            <input name="supplierEmail" type="email" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-block mt-6">
+                    <button id="btnSupplierSave" type="button">Save</button>
+                    <button id="btnSupplierUpdate" type="button">Update</button>
+                    <button id="btnSupplierReset" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card my-4">
+                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                    <h6 class="text-white text-capitalize ps-3">Supplier table</h6>
+                                </div>
+                            </div>
+                            <div class="card-body px-0 pb-2">
+                                <div class="table-responsive p-0">
+                                    <table class="table align-items-center mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Contact</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="supplier-tbl-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer py-4  ">
+                    <div class="container-fluid">
+                        <div class="row align-items-center justify-content-lg-between">
+                            <div class="col-lg-6 mb-lg-0 mb-4">
+                                <div class="copyright text-center text-sm text-muted text-lg-start">
+                                    © <script>
+                                    document.write(new Date().getFullYear())
+                                </script>,
+                                    made with <i class="fa fa-heart"></i> by
+                                    <a class="font-weight-bold" target="_blank">Amil Srinath</a>
+                                    for a better web.
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">Amil Srinath</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">About Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">Blog</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link pe-0 text-muted" target="_blank">License</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </main>
+</div>
+
+<!--Sale-->
+<div id="saleForm">
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg navBar-padding">
+        <div class="testbox">
+            <form>
+                <div class="banner">
+                    <h1>Sale</h1>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label for="name" class="form-label">Name</label>
+                            <input id="saleName" name="name" type="text" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <select name="category" aria-label="Default select example">
+                                <option selected>Select Category</option>
+                                <option value="INTERNATIONAL">INTERNATIONAL</option>
+                                <option value="LOCAL">LOCAL</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Address 1</label>
+                            <input name="supplierAddress1" type="text" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Address 2</label>
+                            <input name="supplierAddress2" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Address 3</label>
+                            <input name="supplierAddress3" type="text" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Address 4</label>
+                            <input name="supplierAddress4" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Address 5</label>
+                            <input name="supplierAddress5" type="text" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Address 6</label>
+                            <input name="supplierAddress6" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Contact 1</label>
+                            <input name="supplierContact1" type="text" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Contact 2</label>
+                            <input name="supplierContact2" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Email</label>
+                            <input name="supplierEmail" type="email" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body px-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Contact</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                            </thead>
+                            <tbody id="sale-tbl-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="btn-block mt-6">
+                    <button id="btnSaleSave" type="button">Save</button>
+                    <button id="btnSaleUpdate" type="button">Update</button>
+                    <button id="btnSaleReset" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+            <div class="container-fluid py-4">
                 <footer class="footer py-4  ">
                     <div class="container-fluid">
                         <div class="row align-items-center justify-content-lg-between">
@@ -1713,6 +1945,7 @@
 <script type="module" src="Controller/Navigation.js"></script>
 <script type="module" src="Controller/SignController.js"></script>
 <script type="module" src="Controller/InventoryController.js"></script>
+<script type="module" src="Controller/SupplierController.js"></script>
 
 <script>
     // $("#topBar").css('display','none');
@@ -1729,7 +1962,9 @@
     $("#employeeForm").css('display','none');
     $("#sidenav-main").css('display','block');
     $("#customerForm").css('display','none');
-    $("#inventoryForm").css('display','block');
+    $("#inventoryForm").css('display','none');
+    $("#suppierForm").css('display','none');
+    $("#saleForm").css('display','block');
 
 </script>
 </body>

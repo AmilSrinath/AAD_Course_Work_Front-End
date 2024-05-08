@@ -1,6 +1,5 @@
 //Login Action
 $("#btnLogin").on('click',()=>{
-    console.log("fndjskanfsnafan")
     var email = $("#txtEmail").val();
     var password = $("#txtPassword").val();
 
@@ -15,7 +14,6 @@ $("#btnLogin").on('click',()=>{
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function(response) {
-            console.log("Success:", response.token);
             localStorage.setItem("token",response.token);
             $("#signInForm").css('display','none');
             $("#dashboardForm").css('display','block');
@@ -39,3 +37,4 @@ $("#btnLogin").on('click',()=>{
     $("#txtEmail").val(null);
     $("#txtPassword").val(null);
 })
+
