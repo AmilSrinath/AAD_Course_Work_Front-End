@@ -235,7 +235,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a id="btnSize" class="nav-link text-white nav-link-color">
+                            <a id="btnSize" class="nav-link text-white nav-link-color" onclick="loadSizeData()">
                                 <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                                     <i class="fa-solid fa-down-left-and-up-right-to-center" style="color: #ffffff;"></i>
                                 </div>
@@ -1225,7 +1225,7 @@
                             <input name="itemName" type="text" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <input name="itemPic" type="file" class="form-control" onchange="itemImageUploaded()">
+                            <input name="itemPic" type="file" onchange="itemImageUploaded()">
                         </div>
                     </div>
                 </div>
@@ -1259,7 +1259,7 @@
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <select id="itemStatus" aria-label="Default select example">
+                            <select id="itemStatus" aria-label="Default select example" class="form-control">
                                 <option selected>Select Status</option>
                                 <option>Low</option>
                                 <option>Available</option>
@@ -1267,7 +1267,7 @@
                             </select>
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <select id="supplierIDs" aria-label="Default select example">
+                            <select id="supplierIDs" aria-label="Default select example" class="form-control">
                                 <option selected>Select Supplier</option>
                             </select>
                         </div>
@@ -1278,39 +1278,6 @@
                     <button id="btnItemSave" type="button">Save</button>
                     <button id="btnItemUpdate" type="button">Update</button>
                     <button id="btnItemreset" type="reset">Reset</button>
-                    <!-- Button trigger modal -->
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Supplier Details</button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Supplier_Inventory Details <Table></Table></h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body ms-7">
-                                    <table>
-                                        <tr>
-                                            <th class="text-center text-uppercase text-secondary text-md-start font-weight-bolder opacity-7 ">Status</th>
-                                            <th class="text-center text-uppercase text-secondary text-md-center font-weight-bolder opacity-7 ps-5 pe-5">Role</th>
-                                            <th class="text-center text-uppercase text-secondary text-md-end font-weight-bolder opacity-7">Designation</th>
-                                        </tr>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">123</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">123</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">123</span>
-                                        </td>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </form>
         </div>
@@ -1395,7 +1362,7 @@
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <select id="itemStatus" aria-label="Default select example">
+                            <select id="itemID" aria-label="Default select example" name="itemID" class="form-control">
                                 <option selected>Select Item</option>
                             </select>
                         </div>
@@ -1410,7 +1377,7 @@
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Size</label>
-                            <input name="itemCategory" type="number" class="form-control">
+                            <input name="itemSize" type="number" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -1444,37 +1411,6 @@
                     <button id="btnSizeSave" type="button">Save</button>
                     <button id="btnSizeUpdate" type="button">Update</button>
                     <button id="btnSizereset" type="reset">Reset</button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Supplier_Inventory Details <Table></Table></h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body ms-7">
-                                    <table>
-                                        <tr>
-                                            <th class="text-center text-uppercase text-secondary text-md-start font-weight-bolder opacity-7 ">Status</th>
-                                            <th class="text-center text-uppercase text-secondary text-md-center font-weight-bolder opacity-7 ps-5 pe-5">Role</th>
-                                            <th class="text-center text-uppercase text-secondary text-md-end font-weight-bolder opacity-7">Designation</th>
-                                        </tr>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">123</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">123</span>
-                                        </td>
-                                        <td class="align-middle text-center">
-                                            <span class="text-secondary text-xs font-weight-bold">123</span>
-                                        </td>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </form>
         </div>
@@ -2141,6 +2077,7 @@
     $("#suppierForm").css('display','none');
     $("#saleForm").css('display','none');
     $("#sizeForm").css('display','block');
+
 
 </script>
 </body>

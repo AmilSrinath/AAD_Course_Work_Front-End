@@ -155,8 +155,6 @@ const setValue = (response) => {
     $("#item-tbl-body").empty();
     response.map((response) => {
 
-        console.log(response);
-
         let imageSrc = `data:image/jpeg;base64,${response.item_pic}`;
 
         let recode = `<tr>
@@ -171,23 +169,8 @@ const setValue = (response) => {
                                         <p id="email" class="text-xs text-secondary mb-0 font-weight-bold">${response.item_desc}</p>
                                     </div>
                                 </td>
-                                <td>
-                                    <span class="text-secondary text-xs font-weight-bold">${response.item_qty}</span>
-                                </td>
                                 <td class="align-middle text-center">
                                     <span class="text-secondary text-xs font-weight-bold">${response.category}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.unit_price_sale}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.unit_price_buy}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.expected_profit}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.profit_margin}</span>
                                 </td>
                                 <td class="align-middle text-center">
                                     <span class="text-secondary text-xs font-weight-bold">${response.occasion}</span>
