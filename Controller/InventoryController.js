@@ -13,13 +13,10 @@ function itemImageUploaded() {
 $("#btnItemSave").on('click', () => {
     let itemName = $("input[name='itemName']").val();
     let itemPic = $("input[name='itemPic']").val();
-    let itemQuantity = $("input[name='itemQuantity']").val();
     let itemCategory = $("input[name='itemCategory']").val();
-    let itemUnitPriceSale = $("input[name='itemUnitPrice-Sale']").val();
-    let itemUnitPriceBuy = $("input[name='itemUnitPrice-Buy']").val();
-    let itemExpectedProfit = $("input[name='itemExpectedProfit']").val();
-    let itemProfitMargin = $("input[name='itemProfitMargin']").val();
-    let itemStatus = $("input[name='itemStatus']").val();
+    let gender = $("input[name='gender']:checked").val();
+    let occasion = $("input[name='occasion']:checked").val();
+    let itemStatus = $("#itemStatus").val();
     let supplierID = $("#supplierIDs").val();
 
 
@@ -41,15 +38,6 @@ $("#btnItemSave").on('click', () => {
         return;
     }
 
-    if (!itemQuantity) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Please Check Item Quantity Field',
-            text: 'Something went wrong!'
-        });
-        return;
-    }
-
     if (!itemCategory) {
         Swal.fire({
             icon: 'error',
@@ -59,43 +47,25 @@ $("#btnItemSave").on('click', () => {
         return;
     }
 
-    if (!itemUnitPriceSale) {
+    if(!gender){
         Swal.fire({
             icon: 'error',
-            title: 'Please Check Item Unit Price Sale Field',
+            title: 'Please Check Gender Field',
             text: 'Something went wrong!'
         });
         return;
     }
 
-    if (!itemUnitPriceBuy) {
+    if(!occasion){
         Swal.fire({
             icon: 'error',
-            title: 'Please Check Item Unit Price Buy Field',
+            title: 'Please Check Occasion Field',
             text: 'Something went wrong!'
         });
         return;
     }
 
-    if (!itemExpectedProfit) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Please Check Item Expected Profit Field',
-            text: 'Something went wrong!'
-        });
-        return;
-    }
-
-    if (!itemProfitMargin) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Please Check Item Profit Margin Field',
-            text: 'Something went wrong!'
-        });
-        return;
-    }
-
-    if (!itemStatus) {
+    if (itemStatus === "Select Status") {
         Swal.fire({
             icon: 'error',
             title: 'Please Check Item Status Field',
@@ -110,13 +80,10 @@ $("#btnItemSave").on('click', () => {
 
     formData.append('item_desc', itemName);
     formData.append('item_pic', itemImageBase64);
-    formData.append('item_qty', itemQuantity);
     formData.append('category', itemCategory);
-    formData.append('unit_price_sale', itemUnitPriceSale);
-    formData.append('unit_price_buy', itemUnitPriceBuy);
-    formData.append('expected_profit', itemExpectedProfit);
-    formData.append('profit_margin', itemProfitMargin);
     formData.append('status', itemStatus);
+    formData.append('gender', gender);
+    formData.append('occasion', occasion);
     formData.append('supplier_id', supplierID);
 
     $.ajax({
@@ -188,6 +155,8 @@ const setValue = (response) => {
     $("#item-tbl-body").empty();
     response.map((response) => {
 
+        console.log(response);
+
         let imageSrc = `data:image/jpeg;base64,${response.item_pic}`;
 
         let recode = `<tr>
@@ -219,6 +188,12 @@ const setValue = (response) => {
                                 </td>
                                 <td class="align-middle text-center">
                                     <span class="text-secondary text-xs font-weight-bold">${response.profit_margin}</span>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span class="text-secondary text-xs font-weight-bold">${response.occasion}</span>
+                                </td>
+                                <td class="align-middle text-center">
+                                    <span class="text-secondary text-xs font-weight-bold">${response.gender}</span>
                                 </td>
                                 <td class="align-middle text-center">
                                     <span class="text-secondary text-xs font-weight-bold">${response.status}</span>

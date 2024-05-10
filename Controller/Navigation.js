@@ -16,6 +16,7 @@ $("#btnDashboard").on('click',()=>{
     $("#inventoryForm").css('display','none');
     $("#suppierForm").css('display','none');
     $("#saleForm").css('display','none');
+    $("#sizeForm").css('display','none');
 })
 
 $("#btnEmployee").on('click',()=>{
@@ -28,6 +29,7 @@ $("#btnEmployee").on('click',()=>{
     $("#inventoryForm").css('display','none');
     $("#suppierForm").css('display','none');
     $("#saleForm").css('display','none');
+    $("#sizeForm").css('display','none');
 })
 
 $("#btnSingOut").on('click',()=>{
@@ -40,6 +42,7 @@ $("#btnSingOut").on('click',()=>{
     $("#inventoryForm").css('display','none');
     $("#suppierForm").css('display','none');
     $("#saleForm").css('display','none');
+    $("#sizeForm").css('display','none');
 })
 
 $("#btnCustomer").on('click',()=> {
@@ -52,6 +55,7 @@ $("#btnCustomer").on('click',()=> {
     $("#inventoryForm").css('display','none');
     $("#suppierForm").css('display','none');
     $("#saleForm").css('display','none');
+    $("#sizeForm").css('display','none');
 })
 
 $("#btnInventory").on('click',()=>{
@@ -64,6 +68,7 @@ $("#btnInventory").on('click',()=>{
     $("#inventoryForm").css('display','block');
     $("#suppierForm").css('display','none');
     $("#saleForm").css('display','none');
+    $("#sizeForm").css('display','none');
 })
 
 $("#btnSupplier").on('click',()=>{
@@ -76,6 +81,7 @@ $("#btnSupplier").on('click',()=>{
     $("#inventoryForm").css('display','none');
     $("#suppierForm").css('display','block');
     $("#saleForm").css('display','none');
+    $("#sizeForm").css('display','none');
 })
 
 $("#btnSale").on('click',()=>{
@@ -88,5 +94,19 @@ $("#btnSale").on('click',()=>{
     $("#inventoryForm").css('display','none');
     $("#suppierForm").css('display','none');
     $("#saleForm").css('display','block');
+    $("#sizeForm").css('display','none');
+})
+
+$("#btnSize").on('click',()=>{
+    $("#signInForm").css('display','none');
+    $("#dashboardForm").css('display','none');
+    $("#employeeForm").css('display','none');
+    $("#topBar").css('display','block');
+    $("#customerForm").css('display','none');
+    $("#sidenav-main").css('display','block');
+    $("#inventoryForm").css('display','none');
+    $("#suppierForm").css('display','none');
+    $("#saleForm").css('display','none');
+    $("#sizeForm").css('display','block');
 })
 

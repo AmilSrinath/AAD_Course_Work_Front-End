@@ -131,8 +131,8 @@
     <main class="main-content  mt-0">
         <div class="page-header align-items-start min-vh-100"
              style="background-image:
-           url('assets/image/loginPageImg.jpg');">
-            <span class="mask bg-gradient-dark opacity-6"></span>
+           url('assets/image/signInform.png');">
+            <span class="mask bg-gradient-dark opacity-2"></span>
             <div class="container my-auto">
                 <div class="row">
                     <div class="col-lg-4 col-md-8 col-12 mx-auto">
@@ -217,13 +217,35 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a id="btnInventory" class="nav-link text-white nav-link-color " onclick="loadItemData()">
+                <a class="nav-link text-white nav-link-color" data-bs-toggle="collapse" href="#submenuInventory" role="button" aria-expanded="false" aria-controls="submenuInventory">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-cart-flatbed" style="color: #ffffff;"></i>
                     </div>
                     <span class="nav-link-text ms-1">Inventory</span>
                 </a>
+                <div class="collapse ms-4" id="submenuInventory">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a id="btnInventory" class="nav-link text-white nav-link-color" onclick="loadItemData()">
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-cart-flatbed" style="color: #ffffff;"></i>
+                                </div>
+                                <span class="nav-link-text ms-1">Inventory</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a id="btnSize" class="nav-link text-white nav-link-color">
+                                <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                                    <i class="fa-solid fa-down-left-and-up-right-to-center" style="color: #ffffff;"></i>
+                                </div>
+                                <span class="nav-link-text ms-1">Size</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </li>
+            
             <li class="nav-item">
                 <a id="btnCustomer" class="nav-link text-white nav-link-color " onclick="loadCustomerData()">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -241,7 +263,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a id="btnSale" class="nav-link text-white nav-link-color " onclick="loadSupplierData()">
+                <a id="btnSale" class="nav-link text-white nav-link-color">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa-solid fa-hand-holding-dollar" style="color: #ffffff;"></i>
                     </div>
@@ -1210,50 +1232,44 @@
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Item Quantity</label>
-                            <input name="itemQuantity" type="number" class="form-control">
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Category</label>
                             <input name="itemCategory" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
-
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Profit Margin</label>
-                            <input name="itemProfitMargin" type="number" class="form-control">
+                <div class="question ms-4 d-flex flex-column flex-md-row">
+                    <div class="d-flex align-items-center me-md-5">
+                        <p class="me-3 mb-0 font-weight-bold">Gender</p>
+                        <div class="question-answer d-flex">
+                            <label class="me-3 mb-1"><input type="radio" value="MAN" name="gender" required> <span>Man</span></label>
+                            <label class="mb-0"><input type="radio" value="WOMEN" name="gender" required> <span>Women</span></label>
                         </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Unit Price-Sale</label>
-                            <input name="itemUnitPrice-Sale" type="number" class="form-control">
+                    </div>
+                
+                    <div class="d-flex align-items-center ms-md-10">
+                        <p class="me-3 mb-0 font-weight-bold">Occasion</p>
+                        <div class="question-answer d-flex">
+                            <label class="me-3 mb-1"><input type="radio" value="Formal" name="occasion" required> <span>Formal</span></label>
+                            <label class="me-3 mb-1"><input type="radio" value="Casual" name="occasion" required> <span>Casual</span></label>
+                            <label class="me-3 mb-1"><input type="radio" value="Industrial" name="occasion" required> <span>Industrial</span></label>
+                            <label class="mb-0"><input type="radio" value="Sport" name="occasion" required> <span>Sport</span></label>
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Unit Price-Buy</label>
-                            <input name="itemUnitPrice-Buy" type="number" class="form-control">
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Expected Profit</label>
-                            <input name="itemExpectedProfit" type="number" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <select id="supplierIDs" aria-label="Default select example">
-                                <option selected>Select Supplier</option>
+                            <select id="itemStatus" aria-label="Default select example">
+                                <option selected>Select Status</option>
+                                <option>Low</option>
+                                <option>Available</option>
+                                <option>Not Available</option>
                             </select>
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Status</label>
-                            <input id="itemStatus" name="itemStatus" type="text" class="form-control">
+                            <select id="supplierIDs" aria-label="Default select example">
+                                <option selected>Select Supplier</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -1315,18 +1331,176 @@
                                         <tr>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Picture</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ID/Name</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Quantity</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Unite Price-Sale</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Unite Price-Buy</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Expected Profit</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Profit Margin</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Occasion</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gender</th>
                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
                                             <th class="text-secondary opacity-7"></th>
                                         </tr>
                                         </thead>
                                         <tbody id="item-tbl-body"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer py-4  ">
+                    <div class="container-fluid">
+                        <div class="row align-items-center justify-content-lg-between">
+                            <div class="col-lg-6 mb-lg-0 mb-4">
+                                <div class="copyright text-center text-sm text-muted text-lg-start">
+                                    © <script>
+                                    document.write(new Date().getFullYear())
+                                </script>,
+                                    made with <i class="fa fa-heart"></i> by
+                                    <a class="font-weight-bold" target="_blank">Amil Srinath</a>
+                                    for a better web.
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">Amil Srinath</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">About Us</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-muted" target="_blank">Blog</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link pe-0 text-muted" target="_blank">License</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </main>
+</div>
+
+<!--Size-->
+<div id="sizeForm">
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg navBar-padding">
+        <div class="testbox">
+            <form>
+                <div class="banner">
+                    <h1>Size Manage Form</h1>
+                </div>
+
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <select id="itemStatus" aria-label="Default select example">
+                                <option selected>Select Item</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Item Quantity</label>
+                            <input name="itemQuantity" type="number" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Size</label>
+                            <input name="itemCategory" type="number" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Profit Margin</label>
+                            <input name="itemProfitMargin" type="number" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Unit Price-Sale</label>
+                            <input name="itemUnitPrice-Sale" type="number" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="name-item">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <label class="form-label">Unit Price-Buy</label>
+                            <input name="itemUnitPrice-Buy" type="number" class="form-control">
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Expected Profit</label>
+                            <input name="itemExpectedProfit" type="number" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btn-block mt-6">
+                    <button id="btnSizeSave" type="button">Save</button>
+                    <button id="btnSizeUpdate" type="button">Update</button>
+                    <button id="btnSizereset" type="reset">Reset</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Supplier_Inventory Details <Table></Table></h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body ms-7">
+                                    <table>
+                                        <tr>
+                                            <th class="text-center text-uppercase text-secondary text-md-start font-weight-bolder opacity-7 ">Status</th>
+                                            <th class="text-center text-uppercase text-secondary text-md-center font-weight-bolder opacity-7 ps-5 pe-5">Role</th>
+                                            <th class="text-center text-uppercase text-secondary text-md-end font-weight-bolder opacity-7">Designation</th>
+                                        </tr>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">123</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">123</span>
+                                        </td>
+                                        <td class="align-middle text-center">
+                                            <span class="text-secondary text-xs font-weight-bold">123</span>
+                                        </td>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card my-4">
+                            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                                <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+                                    <h6 class="text-white text-capitalize ps-3">Inventory table</h6>
+                                </div>
+                            </div>
+                            <div class="card-body px-0 pb-2">
+                                <div class="table-responsive p-0">
+                                    <table class="table align-items-center mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Quantity</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Item_ID</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Delete</th>
+                                            <th class="text-secondary opacity-7"></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="size-tbl-body"></tbody>
                                     </table>
                                 </div>
                             </div>
@@ -1946,6 +2120,7 @@
 <script type="module" src="Controller/SignController.js"></script>
 <script type="module" src="Controller/InventoryController.js"></script>
 <script type="module" src="Controller/SupplierController.js"></script>
+<script type="module" src="Controller/Size.js"></script>
 
 <script>
     // $("#topBar").css('display','none');
@@ -1964,7 +2139,8 @@
     $("#customerForm").css('display','none');
     $("#inventoryForm").css('display','none');
     $("#suppierForm").css('display','none');
-    $("#saleForm").css('display','block');
+    $("#saleForm").css('display','none');
+    $("#sizeForm").css('display','block');
 
 </script>
 </body>
