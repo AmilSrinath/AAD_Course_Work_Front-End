@@ -14,7 +14,7 @@ $("#btnItemSave").on('click', () => {
     let itemName = $("input[name='itemName']").val();
     let itemPic = $("input[name='itemPic']").val();
     let itemCategory = $("input[name='itemCategory']").val();
-    let gender = $("input[name='gender']:checked").val();
+    let gender = $("input[name='inventoryGender']:checked").val();
     let occasion = $("input[name='occasion']:checked").val();
     let itemStatus = $("#itemStatus").val();
     let supplierID = $("#supplierIDs").val();

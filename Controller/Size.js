@@ -120,6 +120,7 @@ $("#btnSizeSave").on('click', () => {
 
 });
 
+//Set Data for table
 function loadSizeData() {
     $.ajax({
         url: "http://localhost:8080/Scope/api/v1/size",
@@ -130,17 +131,23 @@ function loadSizeData() {
             "Authorization": "Bearer " + localStorage.getItem("token")
         },
         success: function (response) {
-            console.log(response);
             $("#size-tbl-body").empty();
-            let recode = `<tr class="me-6">
-                                <td>${response.size_id}</td>
-                                <td>${response.quantity}</td>
-                                <td>${response.quantity}</td>
-                                <td>
-                                    <i id="delteCustomerIcon" class="fa-solid fa-trash fa-xl hand-cursor ms-2" onclick="deleteCustomer(event)"></i>
-                                </td>
-                            </tr>`
+            console.log(response);
+            response.map((response) => {
+                let recode = `<tr class="me-6">
+                                    <td><h6 id="item-code-on-size" class="mb-0 text-sm">${response.item_code}</h6></td>
+                                    <td><h6 id="size-code" class="mb-0 text-sm">${response.size}</h6></td>
+                                    <td>${response.quantity}</td>
+                                    <td>${response.profit_margin}</td>
+                                    <td>${response.unit_price_sale}</td>
+                                    <td>${response.unit_price_buy}</td>
+                                    <td>${response.expected_profit}</td>
+                                    <td>
+                                        <i id="deleteSizeIcon" class="fa-solid fa-trash fa-xl hand-cursor ms-2" onclick="deleteSize(event)"></i>
+                                    </td>
+                                </tr>`
                 $("#size-tbl-body").append(recode);
+            });
         },
         error: function (xhr, status, error) {
             console.error("Error:", xhr.responseText);
@@ -148,6 +155,7 @@ function loadSizeData() {
     });
 }
 
+//Set Item ID for dropdown
 $("#itemID").on('click', function () {
     $.ajax({
         url: "http://localhost:8080/Scope/api/v1/size/getItemIds",
@@ -171,4 +179,72 @@ $("#itemID").on('click', function () {
     });
 })
 
+
+//Delete Size
+function deleteSize(event) {
+    event.stopPropagation();
+    let itemID = $(event.target).closest("tr").find("#item-code-on-size").text();
+    let sizeID = $(event.target).closest("tr").find("#size-code").text();
+
+
+    console.log(itemID);
+    console.log(sizeID);
+
+    var formData = new FormData();
+    formData.append('item_id', itemID);
+    formData.append('size_id', sizeID);
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You want delete row?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "http://localhost:8080/Scope/api/v1/size/delete",
+                type: "DELETE",
+                processData: false,
+                contentType: false,
+                data: formData,
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                success: function (response) {
+                    Swal.fire(
+                        'Deleted!',
+                        `${itemID} ${sizeID} has been deleted.`,
+                        'success'
+                    )
+                    loadSizeData();
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error:", xhr.status);
+                    if (xhr.status === 403) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Only an Admin has access to delete size (:',
+                            text: 'Something went wrong!'
+                        })
+                    }
+                }
+            });
+        }
+    });
+    loadItemData();
+}
+
+
+
+
+
+
+
+
+
+
+window.deleteSize=deleteSize;
 window.loadSizeData=loadSizeData;
