@@ -480,6 +480,16 @@ function setSupplierData(response) {
 
 
 
+// $("#btnSupplierReset").on('click', () => {
+//     $("#supplierName").val(null);
+
+//     var ctrlKeyEvent = $.Event("keydown", { keyCode: 17, which: 17, ctrlKey: true });
+//     $("#supplierName").focus().trigger(ctrlKeyEvent);
+//     $("#supplierName").focus().trigger(ctrlKeyEvent);
+//     $("#supplierName").focus().trigger(ctrlKeyEvent);
+// });
+
+
 
 
 

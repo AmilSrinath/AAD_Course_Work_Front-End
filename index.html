@@ -1234,6 +1234,11 @@
                             <label class="form-label">Category</label>
                             <input name="itemCategory" type="text" class="form-control">
                         </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <select id="supplierIDs" aria-label="Default select example" class="form-control">
+                                <option selected>Select Supplier</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
                 <div class="question ms-4 d-flex flex-column flex-md-row">
@@ -1245,30 +1250,13 @@
                         </div>
                     </div>
                 
-                    <div class="d-flex align-items-center ms-md-10">
+                    <div class="d-flex align-items-center ms-md-9">
                         <p class="me-3 mb-0 font-weight-bold">Occasion</p>
                         <div class="question-answer d-flex">
                             <label class="me-3 mb-1"><input type="radio" value="Formal" name="occasion" required> <span>Formal</span></label>
                             <label class="me-3 mb-1"><input type="radio" value="Casual" name="occasion" required> <span>Casual</span></label>
                             <label class="me-3 mb-1"><input type="radio" value="Industrial" name="occasion" required> <span>Industrial</span></label>
                             <label class="mb-0"><input type="radio" value="Sport" name="occasion" required> <span>Sport</span></label>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <select id="itemStatus" aria-label="Default select example" class="form-control">
-                                <option selected>Select Status</option>
-                                <option>Low</option>
-                                <option>Available</option>
-                                <option>Not Available</option>
-                            </select>
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <select id="supplierIDs" aria-label="Default select example" class="form-control">
-                                <option selected>Select Supplier</option>
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -1295,14 +1283,12 @@
                                     <table class="table align-items-center mb-0">
                                         <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-3">Picture</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ID/Name</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Occasion</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gender</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
-                                        </tr>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder ps-4">Picture</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder ps-3">ID/Name</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Category</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Occasion</th>
+                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Gender</th>
+                    
                                         </thead>
                                         <tbody id="item-tbl-body"></tbody>
                                     </table>
@@ -1356,13 +1342,16 @@
                 <div class="banner">
                     <h1>Size Manage Form</h1>
                 </div>
-
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
                             <select id="itemID" aria-label="Default select example" name="itemID" class="form-control">
                                 <option selected>Select Item</option>
                             </select>
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Size</label>
+                            <input name="itemSize" type="number" class="form-control">
                         </div>
                     </div>
                 </div>
@@ -1374,8 +1363,12 @@
                             <input name="itemQuantity" type="number" class="form-control">
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Size</label>
-                            <input name="itemSize" type="number" class="form-control">
+                            <select id="itemStatus" aria-label="Default select example" class="form-control">
+                                <option selected>Select Status</option>
+                                <option>Low</option>
+                                <option>Available</option>
+                                <option>Not Available</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -1434,6 +1427,7 @@
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder ps-2">Unit Price-Sale</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder ps-2">Unit Price-Buy</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder ps-2">Expeted profit</th>
+                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder ps-4">Status</th>
                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder ps-3">Delete</th>
                                         </tr>
                                         </thead>
@@ -1644,16 +1638,28 @@
                     <h1>Sale</h1>
                 </div>
                 <div class="item">
+                    <div class="rounded-pill name-item pt-3 pb-3">
+                        <div class="input-group input-group-outline w-lg-45 ms-4">
+                            <select name="category form-control" aria-label="Default select example">
+                                <option selected>Select Customer</option>
+                            </select>
+                        </div>
+                        <div class="input-group input-group-outline w-lg-45 me-5">
+                            <label class="form-label">Customer Name</label>
+                            <input name="supplierAddress1" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label for="name" class="form-label">Name</label>
-                            <input id="saleName" name="name" type="text" class="form-control">
+                            <select name="category" aria-label="Default select example">
+                                <option selected>Select Item</option>
+                            </select>
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <select name="category" aria-label="Default select example">
-                                <option selected>Select Category</option>
-                                <option value="INTERNATIONAL">INTERNATIONAL</option>
-                                <option value="LOCAL">LOCAL</option>
+                                <option selected>Select Payment Method</option>
                             </select>
                         </div>
                     </div>
@@ -1661,20 +1667,8 @@
                 <div class="item">
                     <div class="name-item">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Address 1</label>
-                            <input name="supplierAddress1" type="text" class="form-control">
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Address 2</label>
-                            <input name="supplierAddress2" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Address 3</label>
-                            <input name="supplierAddress3" type="text" class="form-control">
+                            <label class="form-label">Item Descreption</label>
+                            <input name="supplierAddress3" type="text" class="form-control" disabled>
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
                             <label class="form-label">Address 4</label>
@@ -2074,9 +2068,8 @@
     $("#customerForm").css('display','none');
     $("#inventoryForm").css('display','none');
     $("#suppierForm").css('display','none');
-    $("#saleForm").css('display','none');
-    $("#sizeForm").css('display','block');
-
+    $("#saleForm").css('display','block');
+    $("#sizeForm").css('display','none');
 
 </script>
 </body>

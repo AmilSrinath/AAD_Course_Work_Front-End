@@ -9,6 +9,29 @@ function itemImageUploaded() {
     reader.readAsDataURL(file);
 }
 
+let itemImageUpdateBase64 = "";
+function viewImage(event) {
+    let itemID = $(event.target).closest("tr").find("#item-code").text();
+    let fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*";
+    event.stopPropagation();
+    fileInput.click();
+
+    fileInput.addEventListener("change", function() {
+        let file = fileInput.files[0];
+        if (file) {
+            let reader = new FileReader();
+            reader.onload = function () {
+                itemImageUpdateBase64 = reader.result.replace("data:", "").replace(/^.+,/, "");
+            }
+            reader.readAsDataURL(file);
+
+            console.log("File uploaded:", itemImageUpdateBase64);
+        }
+    });
+}
+
 //Save
 $("#btnItemSave").on('click', () => {
     let itemName = $("input[name='itemName']").val();
@@ -16,7 +39,6 @@ $("#btnItemSave").on('click', () => {
     let itemCategory = $("input[name='itemCategory']").val();
     let gender = $("input[name='inventoryGender']:checked").val();
     let occasion = $("input[name='occasion']:checked").val();
-    let itemStatus = $("#itemStatus").val();
     let supplierID = $("#supplierIDs").val();
 
 
@@ -160,7 +182,7 @@ const setValue = (response) => {
         let recode = `<tr>
                                 <td>
                                     <div id="imageContainer">
-                                        <img src="${imageSrc}" class="avatar avatar-xl me-1 border-radius-lg" alt="user1">
+                                        <img id="inventoryRowImage" src="${imageSrc}" class="avatar avatar-xl me-1 border-radius-lg" alt="user1" onclick="viewImage(event)">
                                     </div>
                                 </td>
                                 <td>
@@ -177,12 +199,6 @@ const setValue = (response) => {
                                 </td>
                                 <td class="align-middle text-center">
                                     <span class="text-secondary text-xs font-weight-bold">${response.gender}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.status}</span>
-                                </td>
-                                <td>
-                                    <i id="delteIcon" class="fa-solid fa-trash fa-xl hand-cursor ms-2" onclick="deleteItem(event)"></i>
                                 </td>
                             </tr>`
 
@@ -211,6 +227,7 @@ $("#item-tbl-body").on("click","tr", function () {
         }
     });
 });
+
 
 function setData(response) {
     $("input[name='itemName']").focus();
@@ -246,58 +263,9 @@ $("#btnItemUpdate").on('click', () => {
 })
 
 
-//Delete Item
-function deleteItem(event) {
-    event.stopPropagation(); // Stop event propagation
-    let itemID = $(event.target).closest("tr").find("#item-code").text();
-    console.log(itemID);
 
-    var formData = new FormData();
-    formData.append('item_code', itemID);
 
-    Swal.fire({
-        title: 'Are you sure?',
-        text: "You want delete row?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                url: "http://localhost:8080/Scope/api/v1/inventory/delete",
-                type: "DELETE",
-                processData: false,
-                contentType: false,
-                data: formData,
-                headers: {
-                    "Authorization": "Bearer " + localStorage.getItem("token")
-                },
-                success: function (response) {
-                    Swal.fire(
-                        'Deleted!',
-                        `${itemID} has been deleted.`,
-                        'success'
-                    )
-                    loadItemData();
-                },
-                error: function (xhr, status, error) {
-                    console.error("Error:", xhr.status);
-                    if (xhr.status === 403) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Only an Admin has access to delete inventory (:',
-                            text: 'Something went wrong!'
-                        })
-                    }
-                }
-            });
-        }
-    });
-    loadItemData();
-}
 
-window.deleteItem=deleteItem;
+window.viewImage=viewImage;
 window.loadItemData=loadItemData;
 window.itemImageUploaded=itemImageUploaded;

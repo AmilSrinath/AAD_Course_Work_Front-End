@@ -3,6 +3,7 @@ $("#btnSizeSave").on('click', () => {
     let itemID = $("select[name='itemID']").val();
     let itemQuantity = $("input[name='itemQuantity']").val();
     let itemSize = $("input[name='itemSize']").val();
+    let itemStatus = $("#itemStatus").val();
     let itemProfitMargin = $("input[name='itemProfitMargin']").val();
     let itemUnitPriceSale = $("input[name='itemUnitPrice-Sale']").val();
     let itemUnitPriceBuy = $("input[name='itemUnitPrice-Buy']").val();
@@ -18,6 +19,15 @@ $("#btnSizeSave").on('click', () => {
         return;
     }
 
+    if (!itemSize) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Please Check Size Field',
+            text: 'Something went wrong!'
+        });
+        return;
+    }
+
     if (!itemQuantity) {
         Swal.fire({
             icon: 'error',
@@ -27,10 +37,10 @@ $("#btnSizeSave").on('click', () => {
         return;
     }
 
-    if (!itemSize) {
+    if (itemStatus === "Select Status") {
         Swal.fire({
             icon: 'error',
-            title: 'Please Check Size Field',
+            title: 'Please Check Status Field',
             text: 'Something went wrong!'
         });
         return;
@@ -77,6 +87,7 @@ $("#btnSizeSave").on('click', () => {
         item_code: itemID,
         quantity: itemQuantity,
         size: itemSize,
+        status: itemStatus,
         profit_margin: itemProfitMargin,
         unit_price_sale: itemUnitPriceSale,
         unit_price_buy: itemUnitPriceBuy,
@@ -142,6 +153,7 @@ function loadSizeData() {
                                     <td>${response.unit_price_sale}</td>
                                     <td>${response.unit_price_buy}</td>
                                     <td>${response.expected_profit}</td>
+                                    <td>${response.status}</td>
                                     <td>
                                         <i id="deleteSizeIcon" class="fa-solid fa-trash fa-xl hand-cursor ms-2" onclick="deleteSize(event)"></i>
                                     </td>
