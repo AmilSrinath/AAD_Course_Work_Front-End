@@ -98,6 +98,25 @@
   box-sizing: border-box;
 }
 
+.saleItemImage{
+  display: inline;
+}
+
+#imageContainer{
+  display: inline-block;
+  position: relative;
+  margin: 10px;
+}
+
+#itemQuantity{
+  position: absolute;
+  margin-left: 41%;
+}
+
+#itemData{
+  margin-top: 20px;
+}
+
 .hand-cursor{
   cursor: pointer;
   color: #ff2600
@@ -9710,12 +9729,21 @@ fieldset:disabled .btn {
   margin-top: auto !important;
 }
 
+.marginSet{
+  margin-right: 24%; 
+  width: 33%;
+}
+
+.marginRight{
+  margin-right: 24%;
+}
+
 .me-0 {
   margin-right: 0 !important;
 }
 
 .me-1 {
-  margin-right: 0.25rem !important;
+  margin-right: -11rem !important;
 }
 
 .me-2 {
@@ -9759,7 +9787,7 @@ fieldset:disabled .btn {
 }
 
 .me-12 {
-  margin-right: 16rem !important;
+  margin-right: 24rem !important;
 }
 
 .me-auto {
@@ -15197,8 +15225,12 @@ fieldset:disabled .btn {
     width: 10% !important;
   }
 
+  .marginSet{
+    width: 26%;
+  }
+
   .w-lg-15 {
-    width: 15% !important;
+    width: 16% !important;
   }
 
   .w-lg-20 {
@@ -15206,7 +15238,7 @@ fieldset:disabled .btn {
   }
 
   .w-lg-25 {
-    width: 25% !important;
+    width: 16% !important;
   }
 
   .w-lg-30 {

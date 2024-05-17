@@ -1638,10 +1638,11 @@
                     <h1>Sale</h1>
                 </div>
                 <div class="item">
-                    <div class="rounded-pill name-item pt-3 pb-3">
+                    <div class="name-item pt-3 pb-3">
                         <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <select name="category form-control" aria-label="Default select example">
+                            <select id="saleCustomerID" name="category" class="form-control" aria-label="Default select example">
                                 <option selected>Select Customer</option>
+                                <option>Customer Not Registered</option>
                             </select>
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
@@ -1651,60 +1652,30 @@
                     </div>
                 </div>
                 <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <select name="category" aria-label="Default select example">
-                                <option selected>Select Item</option>
-                            </select>
+                    <div class="item">
+                        <div class="name-item">
+                            <div class="input-group input-group-outline w-lg-45 ms-4">
+                                <select id="saleItemIDs" class="form-control" name="category form-control" aria-label="Default select example">
+                                    <option selected>Select Item</option>
+                                </select>
+                            </div>
+                            <div class="input-group input-group-outline marginSet">
+                                <select id="saleItemSize" name="category" class="form-control" aria-label="Default select example">
+                                    <option selected>Select Size</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <select name="category" aria-label="Default select example">
-                                <option selected>Select Payment Method</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Item Descreption</label>
-                            <input name="supplierAddress3" type="text" class="form-control" disabled>
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Address 4</label>
-                            <input name="supplierAddress4" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Address 5</label>
-                            <input name="supplierAddress5" type="text" class="form-control">
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Address 6</label>
-                            <input name="supplierAddress6" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Contact 1</label>
-                            <input name="supplierContact1" type="text" class="form-control">
-                        </div>
-                        <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Contact 2</label>
-                            <input name="supplierContact2" type="text" class="form-control">
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="name-item">
-                        <div class="input-group input-group-outline w-lg-45 ms-4">
-                            <label class="form-label">Email</label>
-                            <input name="supplierEmail" type="email" class="form-control">
+
+                        <div class="name-item" id="itemData">
+                            <div class="input-group input-group-outline w-lg-35 ms-4">
+                                <input id="saleItemDesc" name="itemDesc" type="text" class="form-control" placeholder="Item Description" disabled>
+                            </div>
+                            <div id="itemQuantity" class="input-group input-group-outline w-lg-25 me-12">
+                                <input id="saleItemQuantity" name="itemQuantity" placeholder="Quantity" type="number" class="form-control fo" disabled>
+                            </div>
+                            <div id="itemUnitePrice" class="input-group input-group-outline w-lg-25 marginRight">
+                                <input id="saleItemPrice" name="txtUnitPrice" type="number" class="form-control" placeholder="Unit Price" disabled>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2050,6 +2021,7 @@
 <script type="module" src="Controller/InventoryController.js"></script>
 <script type="module" src="Controller/SupplierController.js"></script>
 <script type="module" src="Controller/Size.js"></script>
+<script type="module" src="Controller/SaleController.js"></script>
 
 <script>
     // $("#topBar").css('display','none');
@@ -2070,7 +2042,6 @@
     $("#suppierForm").css('display','none');
     $("#saleForm").css('display','block');
     $("#sizeForm").css('display','none');
-
 </script>
 </body>
 
