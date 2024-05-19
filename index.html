@@ -1646,11 +1646,11 @@
                             </select>
                         </div>
                         <div class="input-group input-group-outline w-lg-45 me-5">
-                            <label class="form-label">Customer Name</label>
-                            <input name="supplierAddress1" type="text" class="form-control">
+                            <input id="saleCustomerName" value="Enter Customer Name" name="supplierAddress1" type="text" class="form-control">
                         </div>
                     </div>
                 </div>
+                
                 <div class="item">
                     <div class="item">
                         <div class="name-item">
@@ -1667,7 +1667,7 @@
                         </div>
 
                         <div class="name-item" id="itemData">
-                            <div class="input-group input-group-outline w-lg-35 ms-4">
+                            <div class="input-group input-group-outline w-lg-30 ms-4">
                                 <input id="saleItemDesc" name="itemDesc" type="text" class="form-control" placeholder="Item Description" disabled>
                             </div>
                             <div id="itemQuantity" class="input-group input-group-outline w-lg-25 me-12">
@@ -1676,31 +1676,49 @@
                             <div id="itemUnitePrice" class="input-group input-group-outline w-lg-25 marginRight">
                                 <input id="saleItemPrice" name="txtUnitPrice" type="number" class="form-control" placeholder="Unit Price" disabled>
                             </div>
+                            <div class="input-group input-group-outline w-lg-0">
+                                <label class="form-label">Quantity</label>
+                                <input id="itemSizeQuantity" name="itemSizeQuantity" type="number" class="form-control">
+                            </div>
+                            <button id="btnAdd" class="w-10" type="button">Add</button>
                         </div>
                     </div>
                 </div>
 
-                <div class="card-body px-0 pb-2">
+                <div class="card-body px-0 pb-2 text">
+                    <p class="text-uppercase text-sm font-weight-bolder text-center mb-0 mt-6">-----------------------------------------------------------------Cart Details-----------------------------------------------------------------</p>
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
                             <thead>
-                            <tr>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Contact</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Delete</th>
-                            </tr>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder pe-2">Item ID</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder pe-2">Item Name</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder pe-2">Size</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder pe-2">Quantity</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder pe-2">Unite Price</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder pe-2">Total</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder pe-2">Delete</th>
+                                </tr>
                             </thead>
                             <tbody id="sale-tbl-body"></tbody>
                         </table>
                     </div>
+                    <p class="text-end mt-4 me-8 font-weight-bold">Net Total : 
+                        <span id="saleNetTotal"></span>
+                    </p>
                 </div>
 
+                <div class="input-group input-group-outline marginSet ms-4">
+                    <select id="salePaymentType" name="category" class="form-control" aria-label="Default select example">
+                        <option selected>Select Payment Method</option>
+                        <option>Cash</option>
+                        <option>Card</option>
+                    </select>
+                </div>
+
+                <button class="position-absolute bottom-12 end-6" id="btnSalePlaceOrder" type="button">Place Order</button>
+
                 <div class="btn-block mt-6">
-                    <button id="btnSaleSave" type="button">Save</button>
-                    <button id="btnSaleUpdate" type="button">Update</button>
                     <button id="btnSaleReset" type="reset">Reset</button>
                 </div>
             </form>

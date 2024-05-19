@@ -1,6 +1,6 @@
 $("#btnCusSave").on('click', () => {
     let name = $("#customerName").val();
-    let level = $("select[name='level']").val();
+    let level = "NEW";
     let gender = $("input[name='gender']:checked").val();
     let dob = $("#cusDob").val();
     let joinDate = $("#cusJoinDate").val();
@@ -230,6 +230,7 @@ const setValue = (response) => {
                                         <div class="d-flex flex-column justify-content-center">
                                             <h6 class="mb-0 text-sm">${response.name}</h6>
                                             <p id="email" class="text-xs text-secondary mb-0">${response.email}</p>
+                                            <p class="text-xs text-secondary mb-0">${response.level}</p>
                                         </div>
                                     </div>
                                 </td>

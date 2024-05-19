@@ -108,9 +108,21 @@
   margin: 10px;
 }
 
+.paddingSet{
+  padding-right: 5rem;
+}
+
 #itemQuantity{
   position: absolute;
-  margin-left: 41%;
+  margin-left: 34%;
+}
+
+#itemUnitePrice{
+  margin-right: -153px;
+}
+
+#itemSizeQuantity{
+  margin-right: -137px;
 }
 
 #itemData{
