@@ -76,6 +76,8 @@ function setMostSaleItem(date) {
             if (response != ""){
                 $("#mostSaleItem").text(response.item_Desc);
                 $("#mostSaleItemQty").text(response.size);
+                let imageSrc = `data:image/jpeg;base64,${response.item_Pic}`;
+                $("#mostSaleItemImage").attr("src", imageSrc);
             }else{
                 $("#mostSaleItem").text("-");
                 $("#mostSaleItemQty").text(0);

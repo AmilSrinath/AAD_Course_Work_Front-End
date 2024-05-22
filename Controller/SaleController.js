@@ -268,6 +268,19 @@ $(document).ready(function() {
             return;
         }
 
+
+        let backgroundColor = $("#itemSizeQuantity").css("background-color");
+
+        if (backgroundColor === "rgb(255, 0, 0)") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Please Check Quantity (:',
+                text: 'Something went wrong!'
+            });
+            return;
+        }
+
+
         if (!updateOrAddItem(itemID, itemSize, quantity, unitePrice)) {
             let recode = `<tr class="me-6">
                                 <td class="text-center">${itemID}</td>
@@ -306,6 +319,8 @@ $("#btnSalePlaceOrder").on('click', () => {
     let netTotal = $("#saleNetTotal").text();
     let paymentType = $("#salePaymentType1").val();
     let user = $("#dashboardEmail").text();
+
+    console.log(customerID, customerName, netTotal, paymentType, user);
 
     let netTotalAsFloat = parseFloat(netTotal);
     let amount = parseFloat($("#saleAmount").val());
