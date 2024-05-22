@@ -15,17 +15,25 @@ $("#btnLogin").on('click',()=>{
         data: JSON.stringify(data),
         success: function(response) {
             localStorage.setItem("token",response.token);
-            
-            $("#signInForm").css('display','none');
-            $("#dashboardForm").css('display','block');
-            $("#employeeForm").css('display','none');
-            $("#navBarFrom").css('display','block');
 
-            $("#dashboardEmail").text(email);
-            $("#sidenav-main").css('display','block');
-            $("#topBar").css('display','block');
-            $(".nav-link").removeClass("active bg-gradient-primary");
-            $(".dashboardFrom").addClass("active bg-gradient-primary");
+            if(response.role === "USER"){
+                $("#btnDashboard").hide();
+
+                $("#signInForm").css('display','none');
+                $("#sidenav-main").css('display','block');
+                $("#topBar").css('display','block');
+            }else{
+                $("#signInForm").css('display','none');
+                $("#dashboardForm").css('display','block');
+                $("#employeeForm").css('display','none');
+                $("#navBarFrom").css('display','block');
+
+                $("#dashboardEmail").text(email);
+                $("#sidenav-main").css('display','block');
+                $("#topBar").css('display','block');
+                $(".nav-link").removeClass("active bg-gradient-primary");
+                $(".dashboardFrom").addClass("active bg-gradient-primary");
+            }
         },
         error: function(xhr, status, error) {
             console.error("Error:", xhr.responseText);
