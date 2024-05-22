@@ -15,6 +15,7 @@ $("#btnLogin").on('click',()=>{
         data: JSON.stringify(data),
         success: function(response) {
             localStorage.setItem("token",response.token);
+            
             $("#signInForm").css('display','none');
             $("#dashboardForm").css('display','block');
             $("#employeeForm").css('display','none');

@@ -158,6 +158,7 @@ $("#btnCusSave").on('click', () => {
     };
 
     let jsonData = JSON.stringify(customerData);
+
     $.ajax({
         url: 'http://localhost:8080/Scope/api/v1/customer/save',
         type: 'POST',
@@ -225,44 +226,44 @@ const setValue = (response) => {
     response.map((response) => {
 
         let recode = `<tr>
-                                <td>
-                                    <div class="d-flex px-2 py-1">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="mb-0 text-sm">${response.name}</h6>
-                                            <p id="email" class="text-xs text-secondary mb-0">${response.email}</p>
-                                            <p class="text-xs text-secondary mb-0">${response.level}</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <p class="text-xs text-secondary mb-0">${response.address_line_1}</p>
-                                    <p class="text-xs text-secondary mb-0">${response.address_line_2}</p>
-                                    <p class="text-xs text-secondary mb-0">${response.address_line_3}</p>
-                                    <p class="text-xs text-secondary mb-0">${response.address_line_4}</p>
-                                    <p class="text-xs text-secondary mb-0">${response.address_line_5}</p>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.gender}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.total_points}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.dob}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.join_date_as_a_loyalty_customer}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.contact_no}</span>
-                                </td>
-                                <td class="align-middle text-center">
-                                    <span class="text-secondary text-xs font-weight-bold">${response.recent_purchase_date_and_time}</span>
-                                </td>
-                                <td>
-                                    <i id="delteCustomerIcon" class="fa-solid fa-trash fa-xl hand-cursor ms-2" onclick="deleteCustomer(event)"></i>
-                                </td>
-                            </tr>`
+                        <td>
+                            <div class="d-flex px-2 py-1">
+                                <div class="d-flex flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">${response.name}</h6>
+                                    <p id="email" class="text-xs text-secondary mb-0">${response.email}</p>
+                                    <p class="text-xs text-secondary mb-0">${response.level}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p class="text-xs text-secondary mb-0">${response.address_line_1}</p>
+                            <p class="text-xs text-secondary mb-0">${response.address_line_2}</p>
+                            <p class="text-xs text-secondary mb-0">${response.address_line_3}</p>
+                            <p class="text-xs text-secondary mb-0">${response.address_line_4}</p>
+                            <p class="text-xs text-secondary mb-0">${response.address_line_5}</p>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">${response.gender}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">${response.total_points}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">${response.dob}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">${response.join_date_as_a_loyalty_customer}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">${response.contact_no}</span>
+                        </td>
+                        <td class="align-middle text-center">
+                            <span class="text-secondary text-xs font-weight-bold">${response.recent_purchase_date_and_time}</span>
+                        </td>
+                        <td>
+                            <i id="delteCustomerIcon" class="fa-solid fa-trash fa-xl hand-cursor ms-2" onclick="deleteCustomer(event)"></i>
+                        </td>
+                    </tr>`
 
         $("#customer-tbl-body").append(recode);
     })
@@ -274,7 +275,7 @@ function deleteCustomer(event) {
     let email = $(event.target).closest("tr").find("#email").text();
 
     var formData = new FormData();
-    formData.append('email', email); // Append email to FormData object
+    formData.append('email', email);
 
     Swal.fire({
         title: 'Are you sure?',

@@ -304,6 +304,11 @@ $("#btnSalePlaceOrder").on('click', () => {
     let customerID = $("#saleCustomerID").val();
     let customerName = $("#saleCustomerName").val();
     let netTotal = $("#saleNetTotal").text();
+    let paymentType = $("#salePaymentType1").val();
+    let user = $("#dashboardEmail").text();
+
+    let netTotalAsFloat = parseFloat(netTotal);
+    let amount = parseFloat($("#saleAmount").val());
 
     if(customerID === "Select Customer"){
         Swal.fire({
@@ -323,13 +328,33 @@ $("#btnSalePlaceOrder").on('click', () => {
         return;
     }
 
+    if(paymentType === "Select Payment Method"){
+        Swal.fire({
+            icon: 'error',
+            title: 'Please Check Payment Type Field',
+            text: 'Something went wrong!'
+        });
+        return;
+    }
+
+    let backgroundColor = $("#saleAmount").css("background-color");
+
+    if (backgroundColor === "rgb(255, 0, 0)") {
+        console.log("Error!!!!!");
+        Swal.fire({
+            icon: 'error',
+            title: 'Please Check Amount (:',
+            text: 'Something went wrong!'
+        });
+        return;
+    }
+
     let today = new Date();
     let yyyy = today.getFullYear();
     let mm = String(today.getMonth() + 1).padStart(2, '0');
     let dd = String(today.getDate()).padStart(2, '0');
     today = yyyy + '-' + mm + '-' + dd;
 
-    let paymentType = $("#salePaymentType").val();
 
     let items = [];
     $("#sale-tbl-body tr").each(function() {
@@ -363,31 +388,78 @@ $("#btnSalePlaceOrder").on('click', () => {
             net_total: netTotal,
             purchase_date: today,
             payment_type: paymentType,
+            userEmail: user,
             items: items
         }),
+        
+        
         success: function (response) {
-            console.log(response);
-            Swal.fire({
-                icon: 'success',
-                title: 'Successfully Placed Order',
-                text: 'Order ID: ' + response.order_id
-            });
+            if(paymentType === "cash"){
+                $("#sale-tbl-body").empty();
+                $("#saleCustomerID").val("Select Customer");
+                $("#saleCustomerName").val("");
+                $("#saleNetTotal").text("0");
+                $("#saleAmount").val("");
+                $("#salePaymentType1").val("Select Payment Method");
+                $("#btnSaleReset").click();
+
+                
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Placed Order',
+                    text: 'Balance Rs. '+(amount - netTotalAsFloat)
+                });
+            }else{
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Successfully Placed Order',
+                });
+            }
         },
         error: function (xhr, status, error) {
             console.error("Error:", xhr.responseText);
         }
     });
-    
-
-    console.log("Customer ID:", customerID);
-    console.log("Customer Name:", customerName);
-    console.log("Net Total:", netTotal);
-    console.log("Items:", items);
-    console.log(today);
-    console.log(paymentType);
-
 });
 
+
+$("#saleAmount").prop("disabled", true);
+
+$("#salePaymentType1").on('change', function() {
+    let paymentType = $(this).val();
+    let amountLabel = $("#amountLabel");
+    let saleAmountInput = $("#saleAmount");
+
+    if (paymentType === "cash") {
+        amountLabel.text('Amount');
+        saleAmountInput.attr('type', 'number');
+        saleAmountInput.prop("disabled", false);
+    } else if (paymentType === "card") {
+        amountLabel.text('CardNumber');
+        saleAmountInput.attr('type', 'text');
+        saleAmountInput.prop("disabled", false);
+    } else if(paymentType === "Select Payment Method"){
+        saleAmountInput.prop("disabled", true);
+    } else {
+        amountLabel.text('Amount');
+        saleAmountInput.attr('type', 'number');
+        saleAmountInput.prop("disabled", false);
+    }
+});
+
+$("#saleAmount").on('input', function() {
+    let netTotal = parseFloat($("#saleNetTotal").text());
+    let amount = parseFloat($(this).val());
+    let paymentType = $("#salePaymentType1").val();
+
+    if(paymentType === "cash"){
+        if(amount < netTotal){
+            $(this).css("background-color", "red");
+        } else {
+            $(this).css("background-color", "");
+        }
+    }
+});
 
 
 

@@ -1666,7 +1666,7 @@
                             </div>
                         </div>
 
-                        <div class="name-item" id="itemData">
+                        <div class="name-item" id="itemData" style="gap: 10px;">
                             <div class="input-group input-group-outline w-lg-30 ms-4">
                                 <input id="saleItemDesc" name="itemDesc" type="text" class="form-control" placeholder="Item Description" disabled>
                             </div>
@@ -1686,7 +1686,11 @@
                 </div>
 
                 <div class="card-body px-0 pb-2 text">
-                    <p class="text-uppercase text-sm font-weight-bolder text-center mb-0 mt-6">-----------------------------------------------------------------Cart Details-----------------------------------------------------------------</p>
+                    <p class="text-uppercase text-sm text-center mb-0 mt-6">
+                        ------------------------------------------------------------------------------------------
+                        Cart Details
+                        ------------------------------------------------------------------------------------------
+                    </p>
                     <div class="table-responsive p-0">
                         <table class="table align-items-center mb-0">
                             <thead>
@@ -1708,12 +1712,16 @@
                     </p>
                 </div>
 
-                <div class="input-group input-group-outline marginSet ms-4">
-                    <select id="salePaymentType" name="category" class="form-control" aria-label="Default select example">
+                <div class="input-group input-group-outline marginSet ms-4" style="display: flex; gap: 10px; flex-wrap: nowrap;">
+                    <select id="salePaymentType1" name="category" class="form-control" aria-label="Default select example">
                         <option selected>Select Payment Method</option>
-                        <option>Cash</option>
-                        <option>Card</option>
+                        <option value="cash">Cash</option>
+                        <option value="card">Card</option>
                     </select>
+                    <div class="input-group input-group-outline w-lg-10">
+                        <label class="form-label" id="amountLabel" for="saleAmount"></label>
+                        <input id="saleAmount" name="saleAmount" type="number" class="form-control">
+                    </div>
                 </div>
 
                 <button class="position-absolute bottom-12 end-6" id="btnSalePlaceOrder" type="button">Place Order</button>

@@ -102,6 +102,10 @@
   display: inline;
 }
 
+#saleAmount{
+  margin-right: -137px;
+}
+
 #imageContainer{
   display: inline-block;
   position: relative;
@@ -246,7 +250,6 @@ button:hover {
 @media (min-width: 568px) {
   .name-item, .city-item {
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
   }
   .name-item input, .city-item input {
@@ -15238,7 +15241,7 @@ fieldset:disabled .btn {
   }
 
   .marginSet{
-    width: 26%;
+    width: 30%;
   }
 
   .w-lg-15 {
