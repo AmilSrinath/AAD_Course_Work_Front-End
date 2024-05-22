@@ -81,6 +81,7 @@ function setMostSaleItem(date) {
             }else{
                 $("#mostSaleItem").text("-");
                 $("#mostSaleItemQty").text(0);
+                $("#mostSaleItemImage").attr("src", 'https://1080motion.com/wp-content/uploads/2018/06/NoImageFound.jpg.png');
             }
         },
         error: function (xhr, status, error) {
